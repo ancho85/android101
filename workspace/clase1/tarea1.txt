@@ -1,0 +1,9 @@
+notas
+
+titulo, contenido, fecha, acciones.....       
+botón "más" para agregar notas. 
+Cada nota en colores diferenciados por importancia... 
+Conexión con SQLite.
+guardar en doc o pdf.
+
+preguntas en el foro... contacto@ipositivo.com
