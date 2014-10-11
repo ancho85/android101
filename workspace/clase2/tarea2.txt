@@ -1,0 +1,2 @@
+agregar radiobuttons para seleccion de operacion.
+aplicar otras operaciones (ver pdf)

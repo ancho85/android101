@@ -1,0 +1,1 @@
+developer.android.com/guide/appendix/g-app-intents.html
