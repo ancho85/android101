@@ -3,5 +3,6 @@
 
     <string name="app_name">Calculadora</string>
     <string name="calculadora">Calculadora!!!!</string>
+    <string name="otra_activity">otra actividad</string>
 
 </resources>
