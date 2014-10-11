@@ -1,2 +1,18 @@
 agregar radiobuttons para seleccion de operacion.
-aplicar otras operaciones (ver pdf)
+aplicar otras operaciones suma resta multiplicacion division(ver pdf)
+
+
+block de notas. boton para agregar notas (+)
+tiene una lista
+Actividad principal:
+- Boton que abra otra activity.
+muestra otra actividad:
+- titulo (EditText. TextView o Hint)
+- nota (EditText -> Multiline)
+- radiobutton prioridad (alta rojo, medio amarillo, baja verde)
+- boton guardar (no va a hacer nada)
+
+opcional.
+al cambiar el valor del radio, cambiar el color de la nota (arriba, el edittext)
+boton puede utilizar un Toast (notificacion -> "guardado")
+
