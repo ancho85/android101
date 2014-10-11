@@ -41,6 +41,7 @@
         android:id="@+id/buttonOtraActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Otra Actividad" 
-        android:onClick="onClickAction"/>
+        android:onClick="onClickAction"
+        android:text="Otra Actividad" />
+
 </LinearLayout>

@@ -7,17 +7,17 @@
     tools:context="${relativePackage}.${activityClass}" >
 
     <TextView
-    	android:id="@+id/tw_otra"
+        android:id="@+id/tw_otra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Esta es la Otra Activity"
         tools:context=".OtraActivity" />
 
     <Button
-    	android:id="@+id/button1"
-    	android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-    	android:text="Volver" 
-    	android:onClick="volverMain"/>
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="volverMain"
+        android:text="Volver" />
 
 </LinearLayout>
