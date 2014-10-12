@@ -1,0 +1,31 @@
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/GridLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="2"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.blockdenotas.MainActivity" >
+
+    <TextView
+        android:id="@+id/txtHeader"
+        android:layout_width="220dp"
+        android:layout_height="43dp"
+        android:layout_column="0"
+        android:layout_gravity="left|top"
+        android:layout_row="0"
+        android:hint="Click en el boton para agregar nueva nota"
+        android:text="Block de Notas"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageButton
+        android:id="@+id/imgBtnAdd"
+        android:layout_column="1"
+        android:layout_gravity="right|top"
+        android:layout_row="0"
+        android:src="@android:drawable/ic_menu_add" />
+
+</GridLayout>
