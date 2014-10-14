@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
     
     public void onClickAdd(View view){
         Intent otra = new Intent(this, NuevaTarea.class);
-        otra.putExtra("valor", "hola");
+        otra.putExtra("valor", "Titulo");
         startActivity(otra);
     }
 }

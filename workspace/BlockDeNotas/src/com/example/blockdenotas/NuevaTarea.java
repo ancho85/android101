@@ -2,6 +2,8 @@ package com.example.blockdenotas;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -15,8 +17,8 @@ public class NuevaTarea extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new);
         Intent intent = getIntent();
-        // TextView tw = (TextView) findViewById(R.id.tv_header);
-        // tw.setText(intent.getStringExtra("valor"));
+        TextView tw = (TextView) findViewById(R.id.tv_header);
+        tw.setText(intent.getStringExtra("valor"));
     }
 
     public void guardar(View view) {
@@ -31,11 +33,15 @@ public class NuevaTarea extends Activity {
         
         switch (id_rb_checket){
 	         case R.id.rb_high:
+	        	 et_nota.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
 	        	 break;
 	         case R.id.rb_medium:
+	        	 et_nota.getBackground().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_ATOP);
 	        	 break;
 	         case R.id.rb_low:
+	        	 et_nota.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP);
 	        	 break;
+        }
     }
 
 }
