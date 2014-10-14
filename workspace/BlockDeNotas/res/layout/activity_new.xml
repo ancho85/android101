@@ -7,17 +7,70 @@
     tools:context="${relativePackage}.${activityClass}" >
 
     <TextView
-        android:id="@+id/tw_otra"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_header"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="Crear nueva nota"
+        android:text="Titulo"
         tools:context=".OtraActivity" />
 
-    <Button
-        android:id="@+id/button1"
+    <EditText
+        android:id="@+id/et_titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Titulo de la nota" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/et_nota"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Escriba el contenido de la nota"
+        android:inputType="textMultiLine" />
+
+    <TextView
+        android:id="@+id/tv_priority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="volverMain"
-        android:text="Volver" />
+        android:text="Prioridad:" />
+
+    <RadioGroup
+        android:id="@+id/rg_priority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical" 
+        android:onClick="changePriorityColor">
+
+        <RadioButton
+            android:id="@+id/rb_high"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alta" />
+
+        <RadioButton
+            android:id="@+id/rb_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Media" />
+
+        <RadioButton
+            android:id="@+id/rb_low"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Baja" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="guardar"
+        android:text="Guardar" />
 
 </LinearLayout>
