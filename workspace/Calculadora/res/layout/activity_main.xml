@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="center_vertical|end"
-        android:inputType="number" >
+        android:inputType="number" 
+        android:labelFor="@+id/editTextValor1">
 
         <requestFocus />
     </EditText>
@@ -23,7 +24,40 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="center_vertical|end"
-        android:inputType="number" />
+        android:inputType="number" 
+        android:labelFor="@+id/editTextValor2"/>
+
+    <RadioGroup
+        android:id="@+id/rg_operations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radioSuma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Suma" />
+
+        <RadioButton
+            android:id="@+id/radioResta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resta" />
+
+        <RadioButton
+            android:id="@+id/radioMulti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Multiplicar" />
+
+        <RadioButton
+            android:id="@+id/radioDivi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dividir" />
+    </RadioGroup>
 
     <Button
         android:id="@+id/buttonCalcular1"

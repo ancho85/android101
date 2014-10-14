@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ public class MainActivity extends Activity {
     Button calcularButton;
     Button otraActividad;
     TextView resultView;
+    RadioGroup rgOperations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class MainActivity extends Activity {
         n2 = (EditText) findViewById(R.id.editTextValor2);
         calcularButton = (Button) findViewById(R.id.buttonCalcular1);
         resultView = (TextView) findViewById(R.id.textViewResultado1);
+        rgOperations = (RadioGroup) findViewById(R.id.rg_operations);
 
         calcularButton.setOnClickListener(new OnClickListener() {
 
@@ -49,7 +52,25 @@ public class MainActivity extends Activity {
             private int calcular() {
                 valor1 = Integer.parseInt(n1.getText().toString());
                 valor2 = Integer.parseInt(n2.getText().toString());
-                result = valor1 * valor2;
+
+                int id_rb_checket =rgOperations.getCheckedRadioButtonId();
+                
+                switch (id_rb_checket){
+                   case R.id.radioSuma:
+                      result = valor1 + valor2;
+                      break;
+                   case R.id.radioResta:
+                      result = valor1 - valor2;
+                      break;
+                   case R.id.radioMulti:
+                       result = valor1 * valor2;
+                       break;
+                   case R.id.radioDivi:
+                       if (valor2 > 0){
+                           result = valor1 / valor2;
+                       }
+                       break;
+                }
                 return result;
             }
         });
