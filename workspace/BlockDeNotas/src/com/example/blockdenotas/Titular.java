@@ -14,14 +14,14 @@ public class Titular {
      */
     private String titulo;
     private String subtitulo;
-    private Integer prioridad; 
-    
+    private Integer prioridad;
+
     public Titular(String tit, String sub, Integer prio) {
         setTitulo(tit);
         setSubtitulo(sub);
         setPrioridad(prio);
     }
-    
+
     public Integer getPrioridad() {
         return prioridad;
     }
@@ -39,6 +39,25 @@ public class Titular {
     }
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    public Integer getPrioridadColor() {
+        Integer color;
+        switch (prioridad) {
+            case 3:
+                color = android.R.color.holo_red_light;
+                break;
+            case 2:
+                color = android.R.color.holo_orange_light;
+            case 1:
+                color = android.R.color.holo_green_light;
+                break;
+            default:
+                color = android.R.color.darker_gray;
+                break;
+        }
+        return color;
+
     }
 
 }
