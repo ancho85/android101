@@ -30,16 +30,13 @@
         android:onClick="onClickAdd"
         android:contentDescription="Abre una nueva pantalla para agregar nuevas notas" />
 
-    <TextView android:id="@+id/LblTitulo"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="20sp" />
-     
-    <TextView android:id="@+id/LblSubTitulo"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="normal"
-        android:textSize="12sp" />
+    <TextView android:id="@+id/LblEtiqueta"
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:text="Selecciona" />
+
+    <ListView android:id="@+id/LstOpciones" 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" />
 
 </GridLayout>
