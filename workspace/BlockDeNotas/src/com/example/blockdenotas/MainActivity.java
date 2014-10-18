@@ -45,9 +45,8 @@ public class MainActivity extends Activity {
                 TextView lblSubtitulo = (TextView) item.findViewById(R.id.LblSubTitulo);
                 lblSubtitulo.setText(datos[position].getSubtitulo());
 
-                lblSubtitulo.setBackgroundColor(
-                                getResources().getColor(
-                                                datos[position].getPrioridadColor()));
+                lblTitulo.setBackgroundColor(datos[position].getPrioridadColor());
+
                 return (item);
             }
         }
