@@ -9,10 +9,20 @@ import android.view.View;
 
 public class MainActivity extends Activity {
 
+    private Titular[] datos = new Titular[25];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        datos = new Titular[] {
+                new Titular("Título 1", "Subtítulo largo 1", 3),
+                new Titular("Título 2", "Subtítulo largo 2", 1),
+                new Titular("Título 3", "Subtítulo largo 3", 2),
+                new Titular("Título 4", "Subtítulo largo 4", 1),
+                new Titular("Título 5", "Subtítulo largo 5", 3) 
+                };
     }
 
     @Override
@@ -33,8 +43,8 @@ public class MainActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-    
-    public void onClickAdd(View view){
+
+    public void onClickAdd(View view) {
         Intent otra = new Intent(this, NuevaTarea.class);
         otra.putExtra("valor", "Titulo");
         startActivity(otra);
