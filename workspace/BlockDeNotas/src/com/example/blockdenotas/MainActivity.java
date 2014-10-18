@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -21,11 +22,18 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         datos = new Titular[] {
-                new Titular("Título 1", "Subtítulo largo 1", 3), 
-                new Titular("Título 2", "Subtítulo largo 2", 1), 
+                new Titular("Título 1", "Subtítulo largo 1", 3),
+                new Titular("Título 2", "Subtítulo largo 2", 1),
                 new Titular("Título 3", "Subtítulo largo 3", 2),
-                new Titular("Título 4", "Subtítulo largo 4", 1), 
-                new Titular("Título 5", "Subtítulo largo 5", 3)
+                new Titular("Título 4", "Subtítulo largo 4", 1),
+                new Titular("Título 5", "Subtítulo largo 5", 1),
+                new Titular("Título 6", "Subtítulo largo 6", 1),
+                new Titular("Título 7", "Subtítulo largo 7", 1),
+                new Titular("Título 8", "Subtítulo largo 8", 1),
+                new Titular("Título 9", "Subtítulo largo 9", 1),
+                new Titular("Título 10", "Subtítulo largo 10", 1),
+                new Titular("Título 11", "Subtítulo largo 11", 1),
+                new Titular("Título 12", "Subtítulo largo 12", 3)
         };
 
         class AdaptadorTitulares extends ArrayAdapter {
@@ -46,6 +54,9 @@ public class MainActivity extends Activity {
                 return (item);
             }
         }
+        AdaptadorTitulares adaptador = new AdaptadorTitulares(this);
+        ListView lstOpciones = (ListView) findViewById(R.id.LstOpciones);
+        lstOpciones.setAdapter(adaptador);
     }
 
     @Override
