@@ -28,7 +28,18 @@
         android:layout_row="0"
         android:src="@android:drawable/ic_menu_add" 
         android:onClick="onClickAdd"
-        android:contentDescription="Abre una nueva pantalla para agregar nuevas notas"
-        />
+        android:contentDescription="Abre una nueva pantalla para agregar nuevas notas" />
+
+    <TextView android:id="@+id/LblTitulo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="20sp" />
+     
+    <TextView android:id="@+id/LblSubTitulo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="normal"
+        android:textSize="12sp" />
 
 </GridLayout>
