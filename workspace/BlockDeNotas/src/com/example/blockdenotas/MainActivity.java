@@ -54,7 +54,7 @@ public class MainActivity extends Activity {
 
                 if (item == null) {
                     LayoutInflater inflater = context.getLayoutInflater();
-                    item = inflater.inflate(R.layout.listitem_titular, null);
+                    item = inflater.inflate(R.layout.listitem_titular, parent, false);
 
                     holder = new ViewHolder();
                     holder.lblTitulo = (TextView) item.findViewById(R.id.LblTitulo);
