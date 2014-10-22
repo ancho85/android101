@@ -16,6 +16,11 @@ public class MainActivity extends Activity {
 
     private Titular[] datos = new Titular[25];
 
+    static class ViewHolder {
+        TextView lblTitulo;
+        TextView lblSubtitulo;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +33,7 @@ public class MainActivity extends Activity {
                         new Titular("Título 4", "sin prioridad", 4)
         };
 
-        class AdaptadorTitulares extends ArrayAdapter {
+        class AdaptadorTitulares extends ArrayAdapter<Object> {
             Activity context;
 
             AdaptadorTitulares(Activity context) {
@@ -38,18 +43,36 @@ public class MainActivity extends Activity {
 
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
-                LayoutInflater inflater = context.getLayoutInflater();
-                View item = inflater.inflate(R.layout.listitem_titular, null);
-                TextView lblTitulo = (TextView) item.findViewById(R.id.LblTitulo);
-                lblTitulo.setText(datos[position].getTitulo());
-                TextView lblSubtitulo = (TextView) item.findViewById(R.id.LblSubTitulo);
-                lblSubtitulo.setText(datos[position].getSubtitulo());
 
-                lblTitulo.setBackgroundColor(datos[position].getPrioridadColor());
+                // A ViewHolder keeps references to children views to avoid unneccessary calls
+                // to findViewById() on each row.
+                ViewHolder holder;
+                // When convertView is not null, we can reuse it directly, there is no need
+                // to reinflate it. We only inflate a new View when the convertView supplied
+                // by ListView is null.
+                View item = convertView;
+
+                if (item == null) {
+                    LayoutInflater inflater = context.getLayoutInflater();
+                    item = inflater.inflate(R.layout.listitem_titular, null);
+
+                    holder = new ViewHolder();
+                    holder.lblTitulo = (TextView) item.findViewById(R.id.LblTitulo);
+                    holder.lblSubtitulo = (TextView) item.findViewById(R.id.LblSubTitulo);
+                    item.setTag(holder);
+                }
+                else {
+                    holder = (ViewHolder) item.getTag();
+                }
+
+                holder.lblTitulo.setText(datos[position].getTitulo());
+                holder.lblSubtitulo.setText(datos[position].getSubtitulo());
+                holder.lblTitulo.setBackgroundColor(datos[position].getPrioridadColor());
 
                 return (item);
             }
         }
+
         AdaptadorTitulares adaptador = new AdaptadorTitulares(this);
         ListView lstOpciones = (ListView) findViewById(R.id.LstOpciones);
         lstOpciones.setAdapter(adaptador);
