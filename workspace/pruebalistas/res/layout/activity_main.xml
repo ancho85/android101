@@ -9,12 +9,13 @@
     tools:context="com.example.pruebalistas.MainActivity" >
 
     <TextView
+        android:id="@+id/TxtMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" 
-        android:id="@+id/TxtMessage"/>
+        android:text="@string/hello_world" />
 
-    <Spinner android:id="@+id/CmbOpciones"
+    <Spinner
+        android:id="@+id/CmbOpciones"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 

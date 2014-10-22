@@ -16,28 +16,27 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final String[] datos = new String[]{"Elem1","Elem2","Elem3","Elem4","Elem5"}; 
-        ArrayAdapter <String> adaptador = 
-                new ArrayAdapter <String> (this, android.R.layout.simple_spinner_item, datos);
+        final String[] datos = new String[] { "Elem1", "Elem2", "Elem3", "Elem4", "Elem5" };
+        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, datos);
 
-        final Spinner cmbOpciones = (Spinner)findViewById(R.id.CmbOpciones);
+        final Spinner cmbOpciones = (Spinner) findViewById(R.id.CmbOpciones);
 
         adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         cmbOpciones.setAdapter(adaptador);
-        final TextView lblMensaje = (TextView)findViewById(R.id.TxtMessage);
+        final TextView lblMensaje = (TextView) findViewById(R.id.TxtMessage);
 
-        cmbOpciones.setOnItemSelectedListener( 
-                new AdapterView.OnItemSelectedListener() { 
-                    public void onItemSelected(AdapterView<?> parent, 
-                           android.view.View v, int position, long id) { 
-                            lblMensaje.setText("Seleccionado: " + datos[position]); 
-                    } 
-                    public void onNothingSelected(AdapterView<?> parent) {
-                        lblMensaje.setText("");
-                    } 
-                }
-        );
+        cmbOpciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, android.view.View v, int position, long id) {
+                lblMensaje.setText("Seleccionado: " + datos[position]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                lblMensaje.setText("");
+            }
+        });
     }
 
     @Override
