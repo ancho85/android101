@@ -9,7 +9,7 @@ import android.util.Log;
 public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
 
     // Sentencia SQL para crear la tabla de Usuarios
-    String sqlCreate = "CREATE TABLE Usuarios (nombre TEXT, email TEXT)";
+    String sqlCreate = "CREATE TABLE Usuarios (nombre TEXT, email TEXT, celular TEXT)";
 
     public UsuariosSQLiteHelper(Context contexto, String nombre, CursorFactory factory, int version) {
         super(contexto, nombre, factory, version);

@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
 
     private EditText txtNombre;
     private EditText txtEmail;
+    private EditText txtCelular;
 
     private ListView lstUsuarios;
     SQLiteDatabase db;
@@ -32,7 +33,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         // Abrimos la base de datos 'DBUsuarios' en modo escritura
-        UsuariosSQLiteHelper usdbh = new UsuariosSQLiteHelper(this, "DBUsuarios2", null, 1); // nombre de archivo, y el numero es la VERSION.
+        UsuariosSQLiteHelper usdbh = new UsuariosSQLiteHelper(this, "DBUsuarios2", null, 2); // nombre de archivo, y el numero es la VERSION.
 
         db = usdbh.getWritableDatabase(); // establecer base de datos en modo escritura
         CrearEventosOnClick();
@@ -60,13 +61,14 @@ public class MainActivity extends Activity {
 
         txtNombre = (EditText) findViewById(R.id.TxtNombre);
         txtEmail = (EditText) findViewById(R.id.TxtEmail);
+        txtCelular = (EditText) findViewById(R.id.TxtCelular);
 
         lstUsuarios = (ListView) findViewById(R.id.LstValores);
 
         btnInsertar.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                insertarDatos(txtNombre.getText().toString(), txtEmail.getText().toString());
+                insertarDatos(txtNombre.getText().toString(), txtEmail.getText().toString(), txtCelular.getText().toString());
             }
         });
 
@@ -100,11 +102,12 @@ public class MainActivity extends Activity {
     }
 
     /*-----------------------------METODOS DE BASE DE DATOS-------------------------------------------------*/
-    private void insertarDatos(String nombre, String email) {
+    private void insertarDatos(String nombre, String email, String celular) {
         // Creamos el registro a insertar como objeto ContentValues
         ContentValues nuevoRegistro = new ContentValues();
         nuevoRegistro.put("nombre", nombre);
         nuevoRegistro.put("email", email);
+        nuevoRegistro.put("celular", celular);
 
         // Insertamos el registro en la base de datos
         try {
@@ -148,7 +151,7 @@ public class MainActivity extends Activity {
 
     private ArrayAdapter<String> listarDatos(String[] ArgNombres) {
 
-        String[] campos = new String[] { "nombre", "email" };
+        String[] campos = new String[] { "nombre", "email", "celular" };
         String[] Usuarios;
         // String[] args = new String[1]; // si necesitamos filtrar por algun valor aqui deberian ir los valores
         String where = null;
@@ -166,7 +169,8 @@ public class MainActivity extends Activity {
             do {
                 String usuario = c.getString(0);
                 String email = c.getString(1);
-                Usuarios[i] = "" + usuario + " | " + email;
+                String celular = c.getString(2);
+                Usuarios[i] = "" + usuario + " | " + email + " | " + celular;
                 i++;
 
             }
