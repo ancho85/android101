@@ -82,7 +82,9 @@ public class MainActivity extends Activity {
         btnListar.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                lstUsuarios.setAdapter(listarDatos());
+                String[] nombre = new String[1];
+                nombre[0] = txtNombre.getText().toString();
+                lstUsuarios.setAdapter(listarDatos(nombre));
             }
         });
         btnActualizar.setOnClickListener(new OnClickListener() {
@@ -137,20 +139,24 @@ public class MainActivity extends Activity {
         args = ArgNombres;
         try {
             db.delete("Usuarios", "nombre=?", args); // se le pasa un string de arrays
-                                                     // que se matchea con todos los "?" que haya, posición por posición
+            // que se matchea con todos los "?" que haya, posición por posición
         }
         catch (Exception ex) {
             Log.e("SQLite", "Error!", ex);
         }
     }
 
-    private ArrayAdapter<String> listarDatos() {
+    private ArrayAdapter<String> listarDatos(String[] ArgNombres) {
 
         String[] campos = new String[] { "nombre", "email" };
         String[] Usuarios;
-        // String[] args = new String[] {"usu1"}; --si necesitamos filtrar por algun valor aqui deberian ir los valores
+        // String[] args = new String[1]; // si necesitamos filtrar por algun valor aqui deberian ir los valores
+        String where = null;
+        if (ArgNombres[0] != null) {
+            where = "nombre='" + ArgNombres[0] + "'";
+        }
 
-        Cursor c = db.query("Usuarios", campos, null, null, null, null, null);
+        Cursor c = db.query("Usuarios", campos, where, null, null, null, null);
 
         Usuarios = new String[c.getCount()];
         // Nos aseguramos de que existe al menos un registro

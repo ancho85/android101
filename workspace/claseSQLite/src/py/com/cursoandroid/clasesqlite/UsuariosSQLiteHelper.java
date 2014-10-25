@@ -33,6 +33,9 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
         // Sin embargo lo normal será que haya que migrar datos de la tabla antigua
         // a la nueva, por lo que este método debería ser más elaborado.
 
+        // OBS: En caso de pasar de version muy antigua a una muy nueva, deberían haber
+        // funcionalidades para cada caso, paso por paso entre version y version
+
         // Se elimina la versión anterior de la tabla
         db.execSQL("DROP TABLE IF EXISTS Usuarios");
 
