@@ -1,5 +1,9 @@
 en blockdenotas en el main creamos un getReadableDatabase y mostrar las notas.
 en el layout de nueva nota, getWritableDatabase para escribir datos e insertar los valores.
-
 activity vuelve a primer plano con onResume() luego de haber guardado la informacion con nueva_tarea... alli mostrar datos.
+
+DESTACADO:
+ir mas allá, mejorar la interface... boton ordenar por prioridad/nombre.. etc.
+editar nota, click en el elemento de la lista y que abra el layout para edición.
+Los colores no deberían de ser tan feos.
 
