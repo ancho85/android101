@@ -32,9 +32,9 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         // Abrimos la base de datos 'DBUsuarios' en modo escritura
-        UsuariosSQLiteHelper usdbh = new UsuariosSQLiteHelper(this, "DBUsuarios2", null, 1);
+        UsuariosSQLiteHelper usdbh = new UsuariosSQLiteHelper(this, "DBUsuarios2", null, 1); // nombre de archivo, y el numero es la VERSION.
 
-        db = usdbh.getWritableDatabase();
+        db = usdbh.getWritableDatabase(); // establecer base de datos en modo escritura
         CrearEventosOnClick();
 
         // Si hemos abierto correctamente la base de datos
@@ -136,7 +136,8 @@ public class MainActivity extends Activity {
         String[] args = new String[1];
         args = ArgNombres;
         try {
-            db.delete("Usuarios", "nombre=?", args);
+            db.delete("Usuarios", "nombre=?", args); // se le pasa un string de arrays
+                                                     // que se matchea con todos los "?" que haya, posición por posición
         }
         catch (Exception ex) {
             Log.e("SQLite", "Error!", ex);
