@@ -1,0 +1,74 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clase SqLite" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre:" />
+    <EditText
+	    android:id="@+id/TxtNombre"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:inputType="text" >
+	</EditText>
+   <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email:" />
+	<EditText
+	    android:id="@+id/TxtEmail"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:inputType="text" >
+	</EditText>
+	<LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        
+		<Button android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:text="Ins" 
+		    android:id="@+id/Insertar">    
+		</Button>
+		
+		<Button android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:text="Act" 
+		    android:id="@+id/Actualizar">    
+		</Button>
+	
+		<Button android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:text="Elim" 
+		    android:id="@+id/Borrar">    
+		</Button>
+		
+	
+		<Button android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:text="List" 
+		    android:id="@+id/Listar">    
+		</Button>
+	</LinearLayout>
+	
+	<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lista de Resultados:" />
+	<ListView android:id="@+id/LstValores" 
+		android:layout_width="match_parent" 
+		android:layout_height="wrap_content" />
+</LinearLayout>
