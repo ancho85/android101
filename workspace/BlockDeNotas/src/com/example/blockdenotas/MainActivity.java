@@ -28,9 +28,19 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // showTitulares();
+        // No hace falta, se usa el OnResume nomás que
+        // se llama sí o sí luego del OnCreate y luego del Intent
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        showTitulares();
+    }
+
+    private void showTitulares() {
         datos = getDataFromDatabase();
-
 
         class AdaptadorTitulares extends ArrayAdapter<Object> {
             Activity context;
