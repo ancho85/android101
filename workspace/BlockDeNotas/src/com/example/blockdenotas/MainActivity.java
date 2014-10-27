@@ -1,6 +1,7 @@
 package com.example.blockdenotas;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -24,6 +27,7 @@ public class MainActivity extends Activity {
     private Titular[] datos = new Titular[25];
     SQLiteDatabase db;
     Boolean sortByPriority = false;
+    private Context mainContext;
 
     static class ViewHolder {
         TextView lblTitulo;
@@ -35,6 +39,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mainContext = this;
         // showTitulares();
         // No hace falta, se usa el OnResume nomás que
         // se llama sí o sí luego del OnCreate y luego del Intent
@@ -113,6 +118,20 @@ public class MainActivity extends Activity {
         AdaptadorTitulares adaptador = new AdaptadorTitulares(this);
         ListView lstOpciones = (ListView) findViewById(R.id.LstOpciones);
         lstOpciones.setAdapter(adaptador);
+
+        lstOpciones.setOnItemClickListener(new OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent editMode = new Intent(mainContext, NuevaTarea.class);
+                editMode.putExtra("titulo", datos[position].getTitulo());
+                editMode.putExtra("subtitulo", datos[position].getSubtitulo());
+                editMode.putExtra("prioridad", datos[position].getPrioridad());
+                editMode.putExtra("editMode", true);
+                startActivity(editMode);
+            }
+
+        });
     }
 
     @Override
@@ -147,7 +166,7 @@ public class MainActivity extends Activity {
         String[] campos = new String[] { "titulo", "subtitulo", "prioridad" };
         Titular[] Tareas;
 
-        String orderBy = new String("titulo");
+        String orderBy = null; // new String("titulo");
         if (sortByPriority){
             orderBy = new String("prioridad DESC");
         }

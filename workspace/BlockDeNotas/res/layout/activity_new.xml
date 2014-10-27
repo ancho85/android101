@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/tv_header"
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Titulo"
         tools:context=".OtraActivity" />
@@ -24,17 +24,26 @@
         <requestFocus />
     </EditText>
 
+    <TextView
+        android:id="@+id/tv_nota"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contenido"
+        tools:context=".OtraActivity" />
+
     <EditText
         android:id="@+id/et_nota"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:lines="3"
+        android:singleLine="false"
         android:hint="Escriba el contenido de la nota"
         android:inputType="textMultiLine|textNoSuggestions" />
 
     <TextView
         android:id="@+id/tv_priority"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Prioridad:" />
 
@@ -72,5 +81,21 @@
         android:layout_height="wrap_content"
         android:onClick="guardar"
         android:text="Guardar" />
+
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="actualizar"
+        android:visibility="gone"
+        android:text="Actualizar" />
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="borrar"
+        android:visibility="gone"
+        android:text="Borrar" />
 
 </LinearLayout>
