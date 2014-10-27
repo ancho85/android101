@@ -3,8 +3,6 @@
  */
 package com.example.blockdenotas;
 
-import android.graphics.Color;
-
 /**
  * @author carlos.gomez
  *
@@ -47,16 +45,16 @@ public class Titular {
         Integer color;
         switch (prioridad) {
             case 3:
-                color = Color.RED;
+                color = android.R.color.holo_red_light;
                 break;
             case 2:
-                color = Color.YELLOW;
+                color = android.R.color.holo_orange_light;
                 break;
             case 1:
-                color = Color.GREEN;
+                color = android.R.color.holo_green_light;
                 break;
             default:
-                color = Color.LTGRAY;
+                color = android.R.color.holo_blue_bright;
                 break;
         }
         return color;

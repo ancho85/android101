@@ -76,7 +76,7 @@ public class MainActivity extends Activity {
 
                 holder.lblTitulo.setText(datos[position].getTitulo());
                 holder.lblSubtitulo.setText(datos[position].getSubtitulo());
-                holder.lblTitulo.setBackgroundColor(datos[position].getPrioridadColor());
+                holder.lblTitulo.setTextColor(getResources().getColor(datos[position].getPrioridadColor()));
 
                 return (item);
             }
