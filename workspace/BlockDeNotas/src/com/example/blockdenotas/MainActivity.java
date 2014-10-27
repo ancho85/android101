@@ -2,6 +2,8 @@ package com.example.blockdenotas;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 
     private Titular[] datos = new Titular[25];
+    SQLiteDatabase db;
 
     static class ViewHolder {
         TextView lblTitulo;
@@ -26,12 +29,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        datos = new Titular[] {
-                        new Titular("Título 1", "Baja prioridad", 1),
-                        new Titular("Título 2", "Media prioridad", 2),
-                        new Titular("Título 3", "Alta prioridad", 3),
-                        new Titular("Título 4", "sin prioridad", 4)
-        };
+        datos = getDataFromDatabase();
+
 
         class AdaptadorTitulares extends ArrayAdapter<Object> {
             Activity context;
@@ -101,5 +100,35 @@ public class MainActivity extends Activity {
         Intent otra = new Intent(this, NuevaTarea.class);
         otra.putExtra("valor", "Titulo");
         startActivity(otra);
+    }
+
+    private Titular[] getDataFromDatabase() {
+        TareasSQLiteHelper tdbh = new TareasSQLiteHelper(this, "DBTareas.sqlite3", null, 1); // nombre de archivo, y el numero es la VERSION.
+        db = tdbh.getReadableDatabase(); // establecer base de datos en modo lectura
+
+        String[] campos = new String[] { "titulo", "subtitulo", "prioridad" };
+        Titular[] Tareas;
+
+        Cursor c = db.query("Tarea", campos, null, null, null, null, null);
+
+        Tareas = new Titular[c.getCount()];
+
+        // Nos aseguramos de que existe al menos un registro
+        if (c.moveToFirst()) {
+            // Recorremos el cursor hasta que no haya más registros
+            int i = 0;
+            do {
+                String titulo = c.getString(0);
+                String subtitulo = c.getString(1);
+                String prioridad = c.getString(2);
+
+                Tareas[i] = new Titular(titulo, subtitulo, Integer.valueOf(prioridad));
+                i++;
+
+            }
+            while (c.moveToNext());
+        }
+
+        return Tareas;
     }
 }
