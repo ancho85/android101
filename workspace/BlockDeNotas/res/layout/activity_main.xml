@@ -23,7 +23,7 @@
 
     <ImageButton
         android:id="@+id/imgBtnAdd"
-        android:layout_column="0"
+        android:layout_column="2"
         android:layout_gravity="right|top"
         android:layout_row="0"
         android:contentDescription="Abre una nueva pantalla para agregar nuevas notas"
