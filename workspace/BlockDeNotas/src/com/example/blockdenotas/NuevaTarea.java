@@ -84,16 +84,18 @@ public class NuevaTarea extends Activity {
                 }
             }
         });
-
     }
 
     public void prepareEditMode() {
+        setTitle("Editar nota");
+
         btnGuardar = (Button) findViewById(R.id.btn_save);
         btnGuardar.setVisibility(View.GONE); // oculto el boton guardar para no insertar un nuevo dato.
 
         txtTitulo = (EditText) findViewById(R.id.et_titulo);
         txtTitulo.setKeyListener(null); // evito que se pueda cambiar el titulo en modo edicion.
         txtTitulo.setBackgroundResource(R.drawable.shapegray);
+        txtTitulo.setFocusable(false);
 
         TextView tv_header = (TextView) findViewById(R.id.tv_header);
         tv_header.setText("Titulo (No editable)");

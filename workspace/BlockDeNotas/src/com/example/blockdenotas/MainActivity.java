@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
     private Titular[] datos = new Titular[25];
     SQLiteDatabase db;
     Boolean sortByPriority = false;
-    private Context mainContext;
+    private Context mainContext; // para usarlo en el setOnItemClickListener de mi ListView
 
     static class ViewHolder {
         TextView lblTitulo;
