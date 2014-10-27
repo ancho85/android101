@@ -9,8 +9,12 @@
         android:id="@+id/LblTitulo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:gravity="center"
+        android:shadowColor="@android:color/black"
+        android:shadowRadius="1.5"
+        android:shadowDx="1"
+        android:shadowDy="1"
         android:textStyle="bold" />
 
     <TextView
@@ -18,7 +22,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="12sp"
-        android:gravity="center"
+        android:gravity="fill"
         android:textStyle="normal" />
 
 </LinearLayout>

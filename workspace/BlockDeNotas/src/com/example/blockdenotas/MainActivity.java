@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,6 +24,7 @@ public class MainActivity extends Activity {
     static class ViewHolder {
         TextView lblTitulo;
         TextView lblSubtitulo;
+        LinearLayout lilayTareas;
     }
 
     @Override
@@ -68,6 +71,7 @@ public class MainActivity extends Activity {
                     holder = new ViewHolder();
                     holder.lblTitulo = (TextView) item.findViewById(R.id.LblTitulo);
                     holder.lblSubtitulo = (TextView) item.findViewById(R.id.LblSubTitulo);
+                    holder.lilayTareas = (LinearLayout) item.findViewById(R.id.LilayTareas);
                     item.setTag(holder);
                 }
                 else {
@@ -78,6 +82,12 @@ public class MainActivity extends Activity {
                 holder.lblSubtitulo.setText(datos[position].getSubtitulo());
                 holder.lblTitulo.setTextColor(getResources().getColor(datos[position].getPrioridadColor()));
 
+                if (position % 2 == 0) {
+                    holder.lilayTareas.setBackgroundResource(R.drawable.shapegray);
+                }
+                else {
+                    holder.lilayTareas.setBackgroundResource(Color.TRANSPARENT);
+                }
                 return (item);
             }
         }
