@@ -41,11 +41,13 @@
 
     <ListView
         android:id="@+id/LstOpciones"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="348dp"
         android:layout_column="0"
         android:layout_columnSpan="3"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="2dp"
         android:layout_gravity="left|fill_vertical"
-        android:layout_row="3" />
+        android:layout_row="3"/>
 
 </GridLayout>
