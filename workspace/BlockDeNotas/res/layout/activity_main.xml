@@ -17,27 +17,46 @@
         android:layout_column="0"
         android:layout_gravity="left|top"
         android:layout_row="0"
-        android:hint="Click en el boton para agregar nueva nota"
+        android:hint="Click en el boton + para agregar nueva nota"
         android:text="Block de Notas"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ImageButton
         android:id="@+id/imgBtnAdd"
         android:layout_column="2"
-        android:layout_gravity="right|top"
+        android:layout_gravity="center_horizontal|top"
         android:layout_row="0"
         android:contentDescription="Abre una nueva pantalla para agregar nuevas notas"
         android:onClick="onClickAdd"
         android:src="@android:drawable/ic_menu_add" />
 
     <TextView
+        android:id="@+id/LblPrioridad"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_gravity="left|top"
+        android:layout_row="1"
+        android:text="Ordenar por prioridad:" />
+
+    <ToggleButton
+        android:id="@+id/BtnPriority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="2"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_row="1"
+        android:textOff="NO"
+        android:textOn="SI" />
+
+    <TextView
         android:id="@+id/LblEtiqueta"
-        android:layout_width="100dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_column="0"
         android:layout_gravity="left|top"
         android:layout_row="2"
-        android:text="Selecciona" />
+        android:text="Selecciona para ver/editar/borrar:" />
 
     <ListView
         android:id="@+id/LstOpciones"
@@ -45,9 +64,9 @@
         android:layout_height="348dp"
         android:layout_column="0"
         android:layout_columnSpan="3"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="2dp"
         android:layout_gravity="left|fill_vertical"
-        android:layout_row="3"/>
+        android:layout_row="3"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="2dp" />
 
 </GridLayout>

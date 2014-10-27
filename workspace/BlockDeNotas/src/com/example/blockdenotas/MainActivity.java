@@ -12,14 +12,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 public class MainActivity extends Activity {
 
     private Titular[] datos = new Titular[25];
     SQLiteDatabase db;
+    Boolean sortByPriority = false;
 
     static class ViewHolder {
         TextView lblTitulo;
@@ -34,6 +38,20 @@ public class MainActivity extends Activity {
         // showTitulares();
         // No hace falta, se usa el OnResume nomás que
         // se llama sí o sí luego del OnCreate y luego del Intent
+
+        final ToggleButton tglPriority = (ToggleButton) findViewById(R.id.BtnPriority);
+        tglPriority.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                sortByPriority = false;
+                if (isChecked) {
+                    sortByPriority = true;
+                }
+                showTitulares();
+            }
+        });
+
     }
 
     @Override
@@ -129,7 +147,12 @@ public class MainActivity extends Activity {
         String[] campos = new String[] { "titulo", "subtitulo", "prioridad" };
         Titular[] Tareas;
 
-        Cursor c = db.query("Tarea", campos, null, null, null, null, null);
+        String orderBy = new String("titulo");
+        if (sortByPriority){
+            orderBy = new String("prioridad DESC");
+        }
+
+        Cursor c = db.query("Tarea", campos, null, null, null, null, orderBy);
 
         Tareas = new Titular[c.getCount()];
 
