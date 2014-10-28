@@ -24,8 +24,8 @@ public class Social {
  
          intent.setType("text/plain");
          intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-         intent.putExtra(Intent.EXTRA_TEXT, text);
+         intent.putExtra(Intent.EXTRA_SUBJECT, text); 
+         intent.putExtra(Intent.EXTRA_TEXT, subject + ": " + text); //algunas aplicaciones no mmuestran el Subject
  
          ctx.startActivity(Intent.createChooser(intent, ctx.getString(R.string.tit_share)));
         }
