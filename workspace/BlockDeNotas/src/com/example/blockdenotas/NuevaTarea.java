@@ -94,7 +94,7 @@ public class NuevaTarea extends Activity {
 
         txtTitulo = (EditText) findViewById(R.id.et_titulo);
         txtTitulo.setKeyListener(null); // evito que se pueda cambiar el titulo en modo edicion.
-        txtTitulo.setBackgroundResource(R.drawable.shapegray);
+        txtTitulo.setBackgroundResource(R.drawable.shapeblue);
         txtTitulo.setFocusable(false);
 
         TextView tv_header = (TextView) findViewById(R.id.tv_header);

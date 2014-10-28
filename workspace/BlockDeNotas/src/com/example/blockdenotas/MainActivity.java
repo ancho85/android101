@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -41,8 +40,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         mainContext = this;
         // showTitulares();
-        // No hace falta, se usa el OnResume nomás que
-        // se llama sí o sí luego del OnCreate y luego del Intent
+        // No hace falta, se usa el OnResume nomï¿½s que
+        // se llama sï¿½ o sï¿½ luego del OnCreate y luego del Intent
 
         final ToggleButton tglPriority = (ToggleButton) findViewById(R.id.BtnPriority);
         tglPriority.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -106,10 +105,10 @@ public class MainActivity extends Activity {
                 holder.lblTitulo.setTextColor(getResources().getColor(datos[position].getPrioridadColor()));
 
                 if (position % 2 == 0) {
-                    holder.lilayTareas.setBackgroundResource(R.drawable.shapegray);
+                    holder.lilayTareas.setBackgroundResource(R.drawable.shapeblue);
                 }
                 else {
-                    holder.lilayTareas.setBackgroundResource(Color.TRANSPARENT);
+                    holder.lilayTareas.setBackgroundResource(R.drawable.shapedarkblue);
                 }
                 return (item);
             }
@@ -177,7 +176,7 @@ public class MainActivity extends Activity {
 
         // Nos aseguramos de que existe al menos un registro
         if (c.moveToFirst()) {
-            // Recorremos el cursor hasta que no haya más registros
+            // Recorremos el cursor hasta que no haya mï¿½s registros
             int i = 0;
             do {
                 String titulo = c.getString(0);

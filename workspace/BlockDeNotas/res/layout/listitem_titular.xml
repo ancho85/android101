@@ -23,6 +23,10 @@
         android:layout_height="wrap_content"
         android:textSize="12sp"
         android:gravity="fill"
+        android:shadowRadius="1"
+        android:shadowDx="0.5"
+        android:shadowDy="0.5"
+        android:textColor="@android:color/holo_blue_dark"
         android:textStyle="normal" />
 
 </LinearLayout>
