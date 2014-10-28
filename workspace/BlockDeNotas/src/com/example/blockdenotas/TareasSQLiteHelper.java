@@ -1,24 +1,37 @@
 package com.example.blockdenotas;
 import android.content.Context;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 
 public class TareasSQLiteHelper extends SQLiteOpenHelper {
 
-    String sqlCreate = "CREATE TABLE Tarea (titulo TEXT, subtitulo TEXT, prioridad INTEGER)";
+    private static TareasSQLiteHelper mInstance = null;
 
-    public TareasSQLiteHelper(Context context, String name, CursorFactory factory, int version) {
-        super(context, name, factory, version);
-        // TODO Auto-generated constructor stub
+    private static final String DATABASE_NAME = "DBTareas.sqlite3";
+    private static final String DATABASE_TABLE = "Tarea";
+    private static final int DATABASE_VERSION = 1;
+
+    String sqlCreate = "CREATE TABLE " + DATABASE_TABLE + "(titulo TEXT, subtitulo TEXT, prioridad INTEGER)";
+
+
+    public static TareasSQLiteHelper getInstance(Context ctx) {
+
+        // Use the application context, which will ensure that you
+        // don't accidentally leak an Activity's context.
+        // See this article for more information: http://bit.ly/6LRzfx
+        if (mInstance == null) {
+            mInstance = new TareasSQLiteHelper(ctx.getApplicationContext());
+        }
+        return mInstance;
     }
 
-    public TareasSQLiteHelper(Context context, String name, CursorFactory factory, int version, DatabaseErrorHandler errorHandler) {
-        super(context, name, factory, version, errorHandler);
-        // TODO Auto-generated constructor stub
+    /**
+     * Constructor should be private to prevent direct instantiation. make call to static factory method "getInstance()" instead.
+     */
+    private TareasSQLiteHelper(Context ctx) {
+        super(ctx, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -36,7 +49,7 @@ public class TareasSQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Se elimina la versión anterior de la tabla
-        db.execSQL("DROP TABLE IF EXISTS Tarea");
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
 
         // Se crea la nueva versión de la tabla
         db.execSQL(sqlCreate);

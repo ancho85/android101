@@ -25,7 +25,7 @@ public class NuevaTarea extends Activity {
     EditText txtSubtitulo;
     RadioGroup rdbPrioridad;
 
-    final TareasSQLiteHelper tdbh = new TareasSQLiteHelper(this, "DBTareas.sqlite3", null, 1); // nombre de archivo, y el numero es la VERSION.
+    final TareasSQLiteHelper tdbh = TareasSQLiteHelper.getInstance(this);
     SQLiteDatabase db;
 
     Boolean editMode = false;

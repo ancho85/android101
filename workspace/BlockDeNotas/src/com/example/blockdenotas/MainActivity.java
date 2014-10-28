@@ -159,7 +159,7 @@ public class MainActivity extends Activity {
     }
 
     private Titular[] getDataFromDatabase() {
-        TareasSQLiteHelper tdbh = new TareasSQLiteHelper(this, "DBTareas.sqlite3", null, 1); // nombre de archivo, y el numero es la VERSION.
+        TareasSQLiteHelper tdbh = TareasSQLiteHelper.getInstance(this);
         db = tdbh.getReadableDatabase(); // establecer base de datos en modo lectura
 
         String[] campos = new String[] { "titulo", "subtitulo", "prioridad" };
