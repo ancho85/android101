@@ -40,8 +40,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         mainContext = this;
         // showTitulares();
-        // No hace falta, se usa el OnResume nom�s que
-        // se llama s� o s� luego del OnCreate y luego del Intent
+        // No hace falta, se usa el OnResume nomas que
+        // se llama si o si luego del OnCreate y luego del Intent
 
         final ToggleButton tglPriority = (ToggleButton) findViewById(R.id.BtnPriority);
         tglPriority.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -176,7 +176,7 @@ public class MainActivity extends Activity {
 
         // Nos aseguramos de que existe al menos un registro
         if (c.moveToFirst()) {
-            // Recorremos el cursor hasta que no haya m�s registros
+            // Recorremos el cursor hasta que no haya mas registros
             int i = 0;
             do {
                 String titulo = c.getString(0);

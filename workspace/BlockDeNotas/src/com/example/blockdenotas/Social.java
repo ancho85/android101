@@ -14,19 +14,22 @@ import android.content.Intent;
 public class Social {
     /**
      * Open a contextual Menu with the available applications to share
-     *
-     * @param the Context (to open the menú and the new activity)
-     * @param the subject
-     * @param the text
+     * 
+     * @param the
+     *            Context (to open the menu and the new activity)
+     * @param the
+     *            subject
+     * @param the
+     *            text
      */
     public static void share(Context ctx, String subject,String text) {
-         final Intent intent = new Intent(Intent.ACTION_SEND);
- 
-         intent.setType("text/plain");
-         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-         intent.putExtra(Intent.EXTRA_SUBJECT, text); 
-         intent.putExtra(Intent.EXTRA_TEXT, subject + ": " + text); //algunas aplicaciones no mmuestran el Subject
- 
-         ctx.startActivity(Intent.createChooser(intent, ctx.getString(R.string.tit_share)));
-        }
+        final Intent intent = new Intent(Intent.ACTION_SEND);
+
+        intent.setType("text/plain");
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(Intent.EXTRA_SUBJECT, text);
+        intent.putExtra(Intent.EXTRA_TEXT, subject + ": " + text); //algunas aplicaciones no mmuestran el Subject
+
+        ctx.startActivity(Intent.createChooser(intent, ctx.getString(R.string.tit_share)));
+    }
 }
