@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:lines="5"
+        android:lines="4"
         android:singleLine="false"
         android:scrollbars = "vertical"
         android:hint="Escriba el contenido de la nota"
@@ -98,5 +98,13 @@
         android:onClick="borrar"
         android:visibility="gone"
         android:text="Borrar" />
+
+    <Button
+        android:id="@+id/btn_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="compartir"
+        android:visibility="gone"
+        android:text="Compartir con amigos" />
 
 </LinearLayout>

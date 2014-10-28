@@ -27,6 +27,7 @@ public class NuevaTarea extends Activity {
     Button btnGuardar;
     Button btnActualizar;
     Button btnBorrar;
+    Button btnCompartir;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -105,6 +106,9 @@ public class NuevaTarea extends Activity {
 
         btnBorrar = (Button) findViewById(R.id.btn_delete);
         btnBorrar.setVisibility(View.VISIBLE);
+        
+        btnCompartir = (Button) findViewById(R.id.btn_share);
+        btnCompartir.setVisibility(View.VISIBLE);
     };
 
     public ContentValues generateContentValues() {
@@ -193,5 +197,12 @@ public class NuevaTarea extends Activity {
 
         Toast.makeText(NuevaTarea.this, "Nota borrada", Toast.LENGTH_LONG).show();
         finish();
+    }
+    
+    public void compartir(View view) {
+
+        txtTitulo = (EditText) findViewById(R.id.et_titulo);
+        txtSubtitulo = (EditText) findViewById(R.id.et_nota);
+        Social.share(NuevaTarea.this, txtTitulo.getText().toString(), txtSubtitulo.getText().toString());
     }
 }
