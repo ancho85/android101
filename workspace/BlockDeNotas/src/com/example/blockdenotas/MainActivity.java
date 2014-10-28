@@ -1,6 +1,7 @@
 package com.example.blockdenotas;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -42,6 +43,12 @@ public class MainActivity extends Activity {
         // showTitulares();
         // No hace falta, se usa el OnResume nomas que
         // se llama si o si luego del OnCreate y luego del Intent
+
+        FragmentManager fm = getFragmentManager();
+        if (fm.findFragmentById(android.R.id.content) == null) {
+            BuscadorFragment list = new BuscadorFragment();
+            fm.beginTransaction().add(android.R.id.content, list).commit();
+        }
 
         final ToggleButton tglPriority = (ToggleButton) findViewById(R.id.BtnPriority);
         tglPriority.setOnCheckedChangeListener(new OnCheckedChangeListener() {
