@@ -1,7 +1,12 @@
 package com.example.blockdenotas;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.FragmentManager;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -38,7 +43,6 @@ public class NuevaTarea extends Activity {
         txtTitulo = (EditText) findViewById(R.id.et_titulo);
         txtTitulo = (EditText) findViewById(R.id.et_titulo);
 
-
         txtSubtitulo = (EditText) findViewById(R.id.et_nota);
         txtSubtitulo.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
 
@@ -66,7 +70,6 @@ public class NuevaTarea extends Activity {
         if (editMode) {
             prepareEditMode();
         }
-
 
         rdbPrioridad.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -106,7 +109,7 @@ public class NuevaTarea extends Activity {
 
         btnBorrar = (Button) findViewById(R.id.btn_delete);
         btnBorrar.setVisibility(View.VISIBLE);
-        
+
         btnCompartir = (Button) findViewById(R.id.btn_share);
         btnCompartir.setVisibility(View.VISIBLE);
     };
@@ -179,7 +182,14 @@ public class NuevaTarea extends Activity {
         finish();
 
     }
+
     public void borrar(View view) {
+        FragmentManager fragmentManager = getFragmentManager();
+        DialogoConfirmacion dialogo = new DialogoConfirmacion();
+        dialogo.show(fragmentManager, "confirmar primero");
+    }
+
+    public void borrarDeBase() {
         db = tdbh.getWritableDatabase();
 
         txtTitulo = (EditText) findViewById(R.id.et_titulo);
@@ -198,11 +208,36 @@ public class NuevaTarea extends Activity {
         Toast.makeText(NuevaTarea.this, "Nota borrada", Toast.LENGTH_LONG).show();
         finish();
     }
-    
+
     public void compartir(View view) {
 
         txtTitulo = (EditText) findViewById(R.id.et_titulo);
         txtSubtitulo = (EditText) findViewById(R.id.et_nota);
         Social.share(NuevaTarea.this, txtTitulo.getText().toString(), txtSubtitulo.getText().toString());
+    }
+
+    public class DialogoConfirmacion extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+            builder.setMessage("¿Confirma la acción seleccionada?");
+            builder.setTitle("Confirmacion");
+            builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    borrarDeBase();
+                }
+            });
+            builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.cancel();
+                }
+            });
+
+            return builder.create();
+        }
     }
 }
