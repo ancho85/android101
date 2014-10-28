@@ -44,7 +44,7 @@ public class NuevaTarea extends Activity {
         txtTitulo = (EditText) findViewById(R.id.et_titulo);
 
         txtSubtitulo = (EditText) findViewById(R.id.et_nota);
-        txtSubtitulo.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+        txtTitulo.setTextColor(getResources().getColor(android.R.color.holo_green_light));
 
         RadioGroup rdbPrioridad = (RadioGroup) findViewById(R.id.rg_priority);
 
@@ -55,15 +55,15 @@ public class NuevaTarea extends Activity {
         switch (prioridad) {
             case 3:
                 rdbPrioridad.check(R.id.rb_high);
-                txtSubtitulo.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                txtTitulo.setTextColor(getResources().getColor(android.R.color.holo_red_light));
                 break;
             case 2:
                 rdbPrioridad.check(R.id.rb_medium);
-                txtSubtitulo.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
+                txtTitulo.setTextColor(getResources().getColor(android.R.color.holo_orange_light));
                 break;
             case 1:
                 rdbPrioridad.check(R.id.rb_low);
-                txtSubtitulo.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+                txtTitulo.setTextColor(getResources().getColor(android.R.color.holo_green_light));
                 break;
         };
 
@@ -77,13 +77,13 @@ public class NuevaTarea extends Activity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.rb_high:
-                        txtSubtitulo.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        txtTitulo.setTextColor(getResources().getColor(android.R.color.holo_red_light));
                         break;
                     case R.id.rb_medium:
-                        txtSubtitulo.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
+                        txtTitulo.setTextColor(getResources().getColor(android.R.color.holo_orange_light));
                         break;
                     case R.id.rb_low:
-                        txtSubtitulo.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+                        txtTitulo.setTextColor(getResources().getColor(android.R.color.holo_green_light));
                         break;
                 }
             }

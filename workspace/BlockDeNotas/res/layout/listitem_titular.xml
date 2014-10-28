@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:gravity="center"
-        android:shadowColor="@android:color/black"
+        android:shadowColor="@android:color/darker_gray"
         android:shadowRadius="1.5"
         android:shadowDx="1"
         android:shadowDy="1"
