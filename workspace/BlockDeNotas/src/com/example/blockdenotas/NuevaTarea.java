@@ -222,7 +222,7 @@ public class NuevaTarea extends Activity {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-            builder.setMessage("¿Confirma la acción seleccionada?");
+            builder.setMessage("Confirma la accion seleccionada?");
             builder.setTitle("Confirmacion");
             builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                 @Override
