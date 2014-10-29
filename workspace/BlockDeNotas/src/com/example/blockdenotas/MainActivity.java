@@ -1,12 +1,12 @@
 package com.example.blockdenotas;
 
 import android.app.Activity;
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,15 +19,19 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.SearchView;
+import android.widget.SearchView.OnQueryTextListener;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements OnQueryTextListener{
 
     private Titular[] datos = new Titular[25];
     SQLiteDatabase db;
     Boolean sortByPriority = false;
     private Context mainContext; // para usarlo en el setOnItemClickListener de mi ListView
+	
+	String mCurFilter; // If non-null, this is the current filter the user has provided.
 
     static class ViewHolder {
         TextView lblTitulo;
@@ -43,12 +47,6 @@ public class MainActivity extends Activity {
         // showTitulares();
         // No hace falta, se usa el OnResume nomas que
         // se llama si o si luego del OnCreate y luego del Intent
-
-        FragmentManager fm = getFragmentManager();
-        if (fm.findFragmentById(android.R.id.content) == null) {
-            BuscadorFragment list = new BuscadorFragment();
-            fm.beginTransaction().add(android.R.id.content, list).commit();
-        }
 
         final ToggleButton tglPriority = (ToggleButton) findViewById(R.id.BtnPriority);
         tglPriority.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -144,6 +142,14 @@ public class MainActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+		// Place an action bar item for searching.
+		MenuItem item = menu.add("Search");
+		item.setIcon(android.R.drawable.ic_menu_search);
+		item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+		SearchView sv = new SearchView(this);
+		sv.setOnQueryTextListener(this);
+		sv.setQueryHint("titulo/subtitulo");
+		item.setActionView(sv);
         return true;
     }
 
@@ -176,8 +182,15 @@ public class MainActivity extends Activity {
         if (sortByPriority){
             orderBy = new String("prioridad DESC");
         }
-
-        Cursor c = db.query("Tarea", campos, null, null, null, null, orderBy);
+        
+        String filterByFields = null; 
+        String[] filterByValues = null;
+        
+        if (!TextUtils.isEmpty(mCurFilter)){
+        	filterByFields = "titulo LIKE ? OR subtitulo LIKE ?";
+        	filterByValues = new String[] {"%"+ mCurFilter+ "%", "%"+ mCurFilter+ "%"};
+        }
+        Cursor c = db.query("Tarea", campos, filterByFields, filterByValues, null, null, orderBy);
 
         Tareas = new Titular[c.getCount()];
 
@@ -199,4 +212,17 @@ public class MainActivity extends Activity {
 
         return Tareas;
     }
+
+	@Override
+	public boolean onQueryTextChange(String newText) {
+		mCurFilter = !TextUtils.isEmpty(newText) ? newText : null;
+		showTitulares();
+		return false;
+	}
+
+	@Override
+	public boolean onQueryTextSubmit(String arg0) {
+		// Don't care about this.
+		return false;
+	}
 }
