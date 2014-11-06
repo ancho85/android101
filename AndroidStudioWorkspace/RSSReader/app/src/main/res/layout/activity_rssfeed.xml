@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/listFragment"
-        class="com.example.android.rssfeed.MyListFragment"
+        class="rssfeed.android.example.com.rssreader.MyListFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginTop="?android:attr/actionBarSize"
@@ -14,7 +14,7 @@
 
     <fragment
         android:id="@+id/detailFragment"
-        class="com.example.android.rssfeed.DetailFragment"
+        class="rssfeed.android.example.com.rssreader.DetailFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2">
