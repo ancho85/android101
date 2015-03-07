@@ -8,4 +8,12 @@
     <string name="sync_masters">Sincronizar Maestros de Productos</string>
     <string name="sync_stock">Sincronizar inventario</string>
     <string name="stock_hint">Antes de la Toma de Inventario, primero presione Sincronizar Maestros</string>
+    <string name="Back">Volver</string>
+    <string name="Code">Codigo</string>
+    <string name="DateTime">Fecha y Hora</string>
+    <string name="Lot">Lote</string>
+    <string name="Name">Descripcion</string>
+    <string name="Qty">Cantidad</string>
+    <string name="Save">Guardar</string>
+    <string name="title_activity_stock_survey">Nueva Toma de Inventario</string>
 </resources>

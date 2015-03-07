@@ -7,4 +7,12 @@
     <string name="sync_stock">Sync Stock</string>
     <string name="stock_reset">Stock Reset</string>
     <string name="stock_hint">Before Stock Survey, first press on Sync Masters</string>
+    <string name="title_activity_stock_survey">New Stock Survey</string>
+    <string name="Code">Code</string>
+    <string name="Name">Name</string>
+    <string name="Lot">Lot</string>
+    <string name="Qty">Quantity</string>
+    <string name="DateTime">Date and Time</string>
+    <string name="Save">Save</string>
+    <string name="Back">Back</string>
 </resources>

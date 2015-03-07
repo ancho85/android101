@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         android:text="@string/stock_survey"
         android:id="@+id/btn_StockSurvey"
+        android:onClick="onClickNewStockSurvey"
         android:layout_marginTop="23dp"
         android:layout_below="@+id/btn_SyncMasters"
         android:layout_alignRight="@+id/btn_SyncMasters"
