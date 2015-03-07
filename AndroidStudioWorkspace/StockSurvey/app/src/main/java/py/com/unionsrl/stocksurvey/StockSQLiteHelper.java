@@ -13,11 +13,10 @@ import android.util.Log;
  */
 public class StockSQLiteHelper extends SQLiteOpenHelper {
 
-    String sqlItemCreate = "CREATE TABLE IF NOT EXISTS Item (code INTEGER PRIMARY KEY NOT NULL, " +
+    String sqlItemCreate = "CREATE TABLE Item (code INTEGER PRIMARY KEY NOT NULL, " +
             "name TEXT NOT NULL, barcode TEXT)";
-    String sqlStockCreate = "CREATE TABLE IF NOT EXISTS Stock (code INTEGER, name TEXT NOT NULL, " +
-            "lot TEXT NOT NULL, qty INTEGER NOT NULL, datetime, TEXT NOT NULL," +
-            "FOREIGN KEY (code) REFERENCES unionsrl.Item(code)";
+    String sqlStockCreate = "CREATE TABLE Stock (code INTEGER, name TEXT NOT NULL, " +
+            "lot TEXT NOT NULL, qty INTEGER NOT NULL, datetime TEXT NOT NULL)";
 
     public StockSQLiteHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -32,6 +31,7 @@ public class StockSQLiteHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         try {
             db.execSQL(sqlItemCreate);
+            db.execSQL("INSERT INTO Item(code, name, barcode) VALUES (1, 'Item1', 'AAAAAA')");
             db.execSQL(sqlStockCreate);
         }
         catch (Exception ex) {
@@ -42,6 +42,8 @@ public class StockSQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+        db.execSQL("DROP TABLE IF EXISTS Item");
+        db.execSQL("DROP TABLE IF EXISTS Stock");
         try {
             db.execSQL(sqlItemCreate);
             db.execSQL(sqlStockCreate);

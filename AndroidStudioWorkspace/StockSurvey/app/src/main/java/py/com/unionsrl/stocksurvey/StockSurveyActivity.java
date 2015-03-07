@@ -10,7 +10,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class StockSurveyActivity extends ActionBarActivity {
@@ -18,6 +22,7 @@ public class StockSurveyActivity extends ActionBarActivity {
     EditText etxtCode;
     EditText etxtLot;
     EditText etxtQty;
+    TextView txtvName;
 
     SQLiteDatabase db;
 
@@ -58,11 +63,14 @@ public class StockSurveyActivity extends ActionBarActivity {
         etxtCode = (EditText) findViewById(R.id.etxt_Code);
         etxtLot = (EditText) findViewById(R.id.etxt_Lot);
         etxtQty = (EditText) findViewById(R.id.etxt_Qty);
+        txtvName = (TextView) findViewById(R.id.txtv_Name);
 
         ContentValues newStock = new ContentValues();
         newStock.put("code", etxtCode.getText().toString());
         newStock.put("lot", etxtLot.getText().toString());
         newStock.put("qty", etxtQty.getText().toString());
+        newStock.put("name", txtvName.getText().toString());
+        newStock.put("datetime", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 
         // Insertamos el registro en la base de datos
         try {
