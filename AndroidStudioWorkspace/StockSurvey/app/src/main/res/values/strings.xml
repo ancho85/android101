@@ -15,4 +15,6 @@
     <string name="DateTime">Date and Time</string>
     <string name="Save">Save</string>
     <string name="Back">Back</string>
+    <string name="stock_survey_saved">Stock Survey Saved</string>
+    <string name="title_activity_stock_report">Stock Report</string>
 </resources>

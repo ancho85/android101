@@ -90,7 +90,8 @@
         android:id="@+id/btn_Save"
         android:layout_below="@+id/etxt_Qty"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:onClick="saveSurvey"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"

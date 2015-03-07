@@ -19,7 +19,21 @@
         <activity
             android:name=".StockSurveyActivity"
             android:label="@string/title_activity_stock_survey"
-            android:parentActivityName=".MainActivity" > <!-- XXX: api8 incompatible-->
+            android:parentActivityName=".MainActivity" > <!-- XXX: api8 incompatible -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="py.com.unionsrl.stocksurvey.MainActivity" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".StockReportActivity"
+            android:label="@string/title_activity_stock_report"
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="py.com.unionsrl.stocksurvey.MainActivity" />

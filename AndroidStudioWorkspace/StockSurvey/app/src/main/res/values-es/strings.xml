@@ -16,4 +16,6 @@
     <string name="Qty">Cantidad</string>
     <string name="Save">Guardar</string>
     <string name="title_activity_stock_survey">Nueva Toma de Inventario</string>
+    <string name="stock_survey_saved">Toma de Inventario guardada</string>
+    <string name="title_activity_stock_report">Resumen de Inventario</string>
 </resources>

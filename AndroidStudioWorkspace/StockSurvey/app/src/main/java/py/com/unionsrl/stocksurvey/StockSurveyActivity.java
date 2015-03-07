@@ -1,10 +1,12 @@
 package py.com.unionsrl.stocksurvey;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 
 public class StockSurveyActivity extends ActionBarActivity {
@@ -13,6 +15,7 @@ public class StockSurveyActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_survey);
+        Intent intent = getIntent();
     }
 
 
@@ -36,6 +39,11 @@ public class StockSurveyActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void saveSurvey(View view) {
+        Toast.makeText(StockSurveyActivity.this, R.string.stock_survey_saved, Toast.LENGTH_LONG).show();
+        finish();
     }
 
     public void backMain(View view) {
