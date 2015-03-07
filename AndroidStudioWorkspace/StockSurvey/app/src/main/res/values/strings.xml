@@ -6,4 +6,5 @@
     <string name="stock_report">Stock Report</string>
     <string name="sync_stock">Sync Stock</string>
     <string name="stock_reset">Stock Reset</string>
+    <string name="stock_hint">Before Stock Survey, first press on Sync Masters</string>
 </resources>
