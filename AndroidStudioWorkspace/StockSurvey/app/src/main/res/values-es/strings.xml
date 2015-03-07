@@ -4,7 +4,7 @@
     <string name="action_settings">Configuraciones</string>
     <string name="stock_report">Resumen de Inventario</string>
     <string name="stock_reset">Limpiar inventario local</string>
-    <string name="stock_survey">Resumen de Inventario</string>
+    <string name="stock_survey">Toma de Inventario</string>
     <string name="sync_masters">Sincronizar Maestros de Productos</string>
     <string name="sync_stock">Sincronizar inventario</string>
     <string name="stock_hint">Antes de la Toma de Inventario, primero presione Sincronizar Maestros</string>

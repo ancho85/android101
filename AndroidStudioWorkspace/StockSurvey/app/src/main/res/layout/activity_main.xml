@@ -36,7 +36,7 @@
         android:layout_below="@+id/btn_StockSurvey"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="backMain"/>
+        android:onClick="onClickShowStockReport"/>
 
     <Button
         android:layout_width="match_parent"
