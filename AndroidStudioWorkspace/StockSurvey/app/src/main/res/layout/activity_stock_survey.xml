@@ -10,85 +10,79 @@
                 android:id="@+id/activity_stock_survey">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/Code"
         android:id="@+id/txtv_Code"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp"/>
+        android:layout_alignParentStart="true"/>
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etxt_Code"
-        android:layout_alignBottom="@+id/txtv_Code"
-        android:layout_toRightOf="@+id/txtv_Code"
-        android:layout_toEndOf="@+id/txtv_Code"
-        android:layout_marginLeft="34dp"
-        android:layout_marginStart="34dp"
         android:inputType="number"
-        android:digits="0123456789"
-        android:editable="false"/>
+        android:ems="10"
+        android:id="@+id/etxt_Code"
+        android:layout_below="@+id/txtv_Code"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/Name"
         android:id="@+id/txtv_Name"
-        android:layout_below="@+id/txtv_Code"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp"/>
+        android:layout_below="@+id/etxt_Code"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/Lot"
         android:id="@+id/txtv_Lot"
         android:layout_below="@+id/txtv_Name"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp"/>
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
         android:id="@+id/etxt_Lot"
-        android:layout_alignBottom="@+id/txtv_Lot"
-        android:layout_alignLeft="@+id/etxt_Code"
-        android:layout_alignStart="@+id/etxt_Code"
-        android:inputType="text"/>
+        android:layout_below="@+id/txtv_Lot"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/Qty"
         android:id="@+id/txtv_Qty"
         android:layout_below="@+id/etxt_Lot"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp"/>
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etxt_Qty"
-        android:layout_alignBottom="@+id/txtv_Qty"
-        android:layout_toRightOf="@+id/etxt_Lot"
-        android:layout_toEndOf="@+id/etxt_Lot"
         android:inputType="number"
-        android:digits="0123456789"/>
+        android:ems="10"
+        android:id="@+id/etxt_Qty"
+        android:layout_below="@+id/txtv_Qty"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Save"
         android:id="@+id/btn_Save"
-        android:layout_below="@+id/txtv_Qty"
+        android:layout_below="@+id/etxt_Qty"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp"/>
+        android:layout_alignParentStart="true"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -97,8 +91,8 @@
         android:text="@string/Back"
         android:id="@+id/btn_Back"
         android:onClick="backMain"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignTop="@+id/btn_Save"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>
