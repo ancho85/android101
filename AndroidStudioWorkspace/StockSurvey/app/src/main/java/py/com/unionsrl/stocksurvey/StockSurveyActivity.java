@@ -1,15 +1,25 @@
 package py.com.unionsrl.stocksurvey;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 
 public class StockSurveyActivity extends ActionBarActivity {
+
+    EditText etxtCode;
+    EditText etxtLot;
+    EditText etxtQty;
+
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +52,26 @@ public class StockSurveyActivity extends ActionBarActivity {
     }
 
     public void saveSurvey(View view) {
+        StockSQLiteHelper sdb = new StockSQLiteHelper(this, "DBStockSurvey.sqlite", null, 1);
+        db = sdb.getWritableDatabase();
+
+        etxtCode = (EditText) findViewById(R.id.etxt_Code);
+        etxtLot = (EditText) findViewById(R.id.etxt_Lot);
+        etxtQty = (EditText) findViewById(R.id.etxt_Qty);
+
+        ContentValues newStock = new ContentValues();
+        newStock.put("code", etxtCode.getText().toString());
+        newStock.put("lot", etxtLot.getText().toString());
+        newStock.put("qty", etxtQty.getText().toString());
+
+        // Insertamos el registro en la base de datos
+        try {
+            db.insert("Stock", null, newStock);
+        }
+        catch (Exception ex) {
+            Log.e("SQLite", "Error!", ex);
+        }
+
         Toast.makeText(StockSurveyActivity.this, R.string.stock_survey_saved, Toast.LENGTH_LONG).show();
         finish();
     }

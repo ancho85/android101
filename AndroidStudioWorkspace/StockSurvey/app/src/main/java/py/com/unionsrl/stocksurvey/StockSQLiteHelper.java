@@ -13,9 +13,9 @@ import android.util.Log;
  */
 public class StockSQLiteHelper extends SQLiteOpenHelper {
 
-    String sqlItemCreate = "CREATE TABLE IF NOT EXISTS unionsrl.Item (code INTEGER PRIMARY KEY NOT NULL, " +
+    String sqlItemCreate = "CREATE TABLE IF NOT EXISTS Item (code INTEGER PRIMARY KEY NOT NULL, " +
             "name TEXT NOT NULL, barcode TEXT)";
-    String sqlStockCreate = "CREATE TABLE IF NOT EXISTS unionsrl.Stock (code INTEGER, name TEXT NOT NULL, " +
+    String sqlStockCreate = "CREATE TABLE IF NOT EXISTS Stock (code INTEGER, name TEXT NOT NULL, " +
             "lot TEXT NOT NULL, qty INTEGER NOT NULL, datetime, TEXT NOT NULL," +
             "FOREIGN KEY (code) REFERENCES unionsrl.Item(code)";
 
