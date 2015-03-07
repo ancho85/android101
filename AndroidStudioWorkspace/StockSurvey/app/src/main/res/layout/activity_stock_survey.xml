@@ -26,7 +26,9 @@
         android:id="@+id/etxt_Code"
         android:layout_below="@+id/txtv_Code"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:digits="0123456789"
+        android:background="@color/white"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -35,7 +37,9 @@
         android:id="@+id/txtv_Name"
         android:layout_below="@+id/etxt_Code"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentEnd="true"
+        android:textStyle="bold"
+        android:lines="2"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -49,12 +53,13 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="text"
         android:ems="10"
         android:id="@+id/etxt_Lot"
         android:layout_below="@+id/txtv_Lot"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:background="@color/white"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -73,7 +78,10 @@
         android:id="@+id/etxt_Qty"
         android:layout_below="@+id/txtv_Qty"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:digits="0123456789"
+        android:autoText="false"
+        android:background="@color/white"/>
 
     <Button
         android:layout_width="wrap_content"
