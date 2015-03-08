@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
               android:layout_height="?android:attr/listPreferredItemHeight"
-              android:orientation="horizontal"
               android:layout_gravity="center_vertical"
-              android:paddingTop="4dp"
-              android:paddingBottom="6dp">
+              android:orientation="horizontal"
+              android:paddingBottom="6dp"
+              android:paddingTop="4dp">
 
     <TextView
         android:id="@+id/txtv_Code"
@@ -17,8 +17,8 @@
     <TextView
         android:id="@+id/txtv_Name"
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:textSize="12sp"
         android:textStyle="normal"
         />
@@ -26,8 +26,8 @@
     <TextView
         android:id="@+id/txtv_Lot"
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:textSize="12sp"
         android:textStyle="normal"
         />
@@ -35,8 +35,8 @@
     <TextView
         android:id="@+id/txtv_Qty"
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:textSize="12sp"
         android:textStyle="normal"
         />
@@ -44,8 +44,8 @@
     <TextView
         android:id="@+id/txtv_Datetime"
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:textSize="12sp"
         android:textStyle="normal"
         />
