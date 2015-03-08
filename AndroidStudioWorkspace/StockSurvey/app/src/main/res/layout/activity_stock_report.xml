@@ -12,6 +12,7 @@
         android:id="@+id/lst_Stock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:dividerHeight="2dp"
         android:layout_above="@+id/btn_Back"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
