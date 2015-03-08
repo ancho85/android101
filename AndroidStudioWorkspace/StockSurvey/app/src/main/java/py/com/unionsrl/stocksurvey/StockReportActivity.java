@@ -1,8 +1,9 @@
 package py.com.unionsrl.stocksurvey;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 public class StockReportActivity extends ActionBarActivity {
 
     private Stock[] datos = new Stock[25];
+    SQLiteDatabase db;
 
     static class ViewHolder {
         TextView tvCode;
@@ -30,10 +32,7 @@ public class StockReportActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_report);
 
-        datos = new Stock[] {
-                new Stock(1, "test", "a", 1),
-                new Stock(2, "test2", "ab", 2)
-        };
+        datos = getDataFromDatabase();
 
         class AdaptadorStock extends ArrayAdapter {
             ActionBarActivity context;
@@ -99,5 +98,35 @@ public class StockReportActivity extends ActionBarActivity {
 
     public void backMain(View view) {
         finish();
+    }
+
+    private Stock[] getDataFromDatabase() {
+        StockSQLiteHelper sdb = new StockSQLiteHelper(this, "DBStockSurvey.sqlite", null, 1);
+        db = sdb.getReadableDatabase();
+
+        String[] campos = new String[] { "code", "name", "lot", "qty", "datetime" };
+        Stock[] Survey;
+
+        Cursor c = db.query("Stock", campos, null, null, null, null, null);
+
+        Survey = new Stock[c.getCount()];
+
+        if (c.moveToFirst()) {
+            int i = 0;
+            do {
+                String code = c.getString(0);
+                String name = c.getString(1);
+                String lot = c.getString(2);
+                String qty = c.getString(3);
+                String datetime = c.getString(4);
+
+                Survey[i] = new Stock(Integer.valueOf(code), name, lot, Integer.valueOf(qty), datetime);
+                i++;
+
+            }
+            while (c.moveToNext());
+        }
+        db.close();
+        return Survey;
     }
 }
