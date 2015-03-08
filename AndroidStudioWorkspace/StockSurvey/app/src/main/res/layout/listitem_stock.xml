@@ -1,42 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:paddingTop="4dp"
+              android:paddingBottom="6dp">
 
     <TextView
         android:id="@+id/txtv_Code"
-        android:layout_width="fill_parent"
+        android:layout_width="30sp"
         android:layout_height="wrap_content"
         android:textSize="12sp"
         android:textStyle="normal"/>
 
     <TextView
         android:id="@+id/txtv_Name"
-        android:layout_width="fill_parent"
+        android:layout_width="100sp"
         android:layout_height="wrap_content"
         android:textSize="12sp"
-        android:textStyle="normal"/>
+        android:textStyle="normal"
+        />
 
     <TextView
         android:id="@+id/txtv_Lot"
-        android:layout_width="fill_parent"
+        android:layout_width="30sp"
         android:layout_height="wrap_content"
         android:textSize="12sp"
-        android:textStyle="normal"/>
+        android:textStyle="normal"
+        />
 
     <TextView
         android:id="@+id/txtv_Qty"
-        android:layout_width="fill_parent"
+        android:layout_width="30sp"
         android:layout_height="wrap_content"
         android:textSize="12sp"
-        android:textStyle="normal"/>
+        android:textStyle="normal"
+        />
 
     <TextView
         android:id="@+id/txtv_Datetime"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="12sp"
-        android:textStyle="normal"/>
+        android:textStyle="normal"
+        />
 
 </LinearLayout>
