@@ -17,6 +17,14 @@ public class StockReportActivity extends ActionBarActivity {
 
     private Stock[] datos = new Stock[25];
 
+    static class ViewHolder {
+        TextView tvCode;
+        TextView tvName;
+        TextView tvLot;
+        TextView tvQty;
+        TextView tvDatetime;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,18 +44,27 @@ public class StockReportActivity extends ActionBarActivity {
             }
 
             public View getView(int position, View convertView, ViewGroup parent) {
-                LayoutInflater inflater = context.getLayoutInflater();
-                View item = inflater.inflate(R.layout.listitem_stock, null);
-                TextView tvCode = (TextView) item.findViewById(R.id.txtv_Code);
-                TextView tvName = (TextView) item.findViewById(R.id.txtv_Name);
-                TextView tvLot = (TextView) item.findViewById(R.id.txtv_Lot);
-                TextView tvQty = (TextView) item.findViewById(R.id.txtv_Qty);
-                TextView tvDatetime = (TextView) item.findViewById(R.id.txtv_Datetime);
-                tvCode.setText(datos[position].getCode().toString());
-                tvName.setText(datos[position].getName());
-                tvLot.setText(datos[position].getLot());
-                tvQty.setText(datos[position].getQty().toString());
-                tvDatetime.setText(datos[position].getDateTime());
+                ViewHolder holder;
+                View item = convertView;
+                if (item == null) {
+                    LayoutInflater inflater = context.getLayoutInflater();
+                    item = inflater.inflate(R.layout.listitem_stock, parent, false);
+                    holder = new ViewHolder();
+                    holder.tvCode = (TextView) item.findViewById(R.id.txtv_Code);
+                    holder.tvName = (TextView) item.findViewById(R.id.txtv_Name);
+                    holder.tvLot = (TextView) item.findViewById(R.id.txtv_Lot);
+                    holder.tvQty = (TextView) item.findViewById(R.id.txtv_Qty);
+                    holder.tvDatetime = (TextView) item.findViewById(R.id.txtv_Datetime);
+                    item.setTag(holder);
+                }
+                else {
+                    holder = (ViewHolder) item.getTag();
+                }
+                holder.tvCode.setText(datos[position].getCode().toString());
+                holder.tvName.setText(datos[position].getName());
+                holder.tvLot.setText(datos[position].getLot());
+                holder.tvQty.setText(datos[position].getQty().toString());
+                holder.tvDatetime.setText(datos[position].getDateTime());
                 return (item);
             }
         }
