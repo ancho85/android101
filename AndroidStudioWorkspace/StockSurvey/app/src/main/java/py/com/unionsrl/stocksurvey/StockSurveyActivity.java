@@ -80,6 +80,7 @@ public class StockSurveyActivity extends ActionBarActivity {
             Log.e("SQLite", "Error!", ex);
         }
 
+        db.close();
         Toast.makeText(StockSurveyActivity.this, R.string.stock_survey_saved, Toast.LENGTH_LONG).show();
         finish();
     }
