@@ -1,5 +1,8 @@
 package py.com.unionsrl.stocksurvey;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 /**
  * Created by ancho on 07/03/15.
  */
@@ -11,11 +14,12 @@ public class Stock {
     private Integer qty;
     private String dateTime;
 
-    public Stock(Integer code, String name, String lot, Integer qty, String dateTime) {
+    public Stock(Integer code, String name, String lot, Integer qty) {
         setCode(code);
         setName(name);
         setLot(lot);
         setQty(qty);
+        dateTime = DateFormat.getDateTimeInstance().format(new Date());
         setDateTime(dateTime);
     }
 
