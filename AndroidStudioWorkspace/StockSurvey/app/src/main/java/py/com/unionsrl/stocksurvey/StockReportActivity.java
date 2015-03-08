@@ -31,7 +31,15 @@ public class StockReportActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_report);
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        showReport();
+    }
+
+    private void showReport(){
         datos = getDataFromDatabase();
 
         class AdaptadorStock extends ArrayAdapter {
@@ -126,6 +134,7 @@ public class StockReportActivity extends ActionBarActivity {
             }
             while (c.moveToNext());
         }
+        c.close();
         db.close();
         return Survey;
     }
