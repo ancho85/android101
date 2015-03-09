@@ -109,7 +109,7 @@ public class StockReportActivity extends ActionBarActivity {
     }
 
     private Stock[] getDataFromDatabase() {
-        StockSQLiteHelper sdb = new StockSQLiteHelper(this, "DBStockSurvey.sqlite", null, 1);
+        StockSQLiteHelper sdb = StockSQLiteHelper.getInstance(this);
         db = sdb.getReadableDatabase();
 
         String[] campos = new String[] { "code", "name", "lot", "qty", "datetime" };

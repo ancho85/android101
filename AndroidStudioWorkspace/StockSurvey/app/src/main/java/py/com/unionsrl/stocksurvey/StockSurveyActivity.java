@@ -57,7 +57,7 @@ public class StockSurveyActivity extends ActionBarActivity {
     }
 
     public void saveSurvey(View view) {
-        StockSQLiteHelper sdb = new StockSQLiteHelper(this, "DBStockSurvey.sqlite", null, 1);
+        StockSQLiteHelper sdb = StockSQLiteHelper.getInstance(this);
         db = sdb.getWritableDatabase();
 
         etxtCode = (EditText) findViewById(R.id.etxt_Code);
