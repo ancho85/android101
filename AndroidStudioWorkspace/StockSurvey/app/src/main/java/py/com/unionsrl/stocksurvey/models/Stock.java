@@ -1,4 +1,4 @@
-package py.com.unionsrl.stocksurvey;
+package py.com.unionsrl.stocksurvey.models;
 
 /**
  * Created by ancho on 07/03/15.

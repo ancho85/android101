@@ -1,4 +1,4 @@
-package py.com.unionsrl.stocksurvey;
+package py.com.unionsrl.stocksurvey.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

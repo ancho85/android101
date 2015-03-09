@@ -1,7 +1,6 @@
 package py.com.unionsrl.stocksurvey;
 
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
@@ -16,6 +15,8 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import py.com.unionsrl.stocksurvey.database.StockSQLiteHelper;
 
 
 public class StockSurveyActivity extends ActionBarActivity {
