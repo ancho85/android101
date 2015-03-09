@@ -18,4 +18,9 @@
     <string name="title_activity_stock_survey">Nueva Toma de Inventario</string>
     <string name="stock_survey_saved">Toma de Inventario guardada</string>
     <string name="title_activity_stock_report">Resumen de Inventario</string>
+    <string name="please_wait">Espere un momento</string>
+    <string name="requesting_masters_data">Solicitando Maestros de Productos</string>
+    <string name="sync_success">Sincronizacion exitosa</string>
+    <string name="unknown_error">Error desconocido</string>
+    <string name="ws_comm_error">Error de comunicacion con el WebService. Verifique Internet</string>
 </resources>
