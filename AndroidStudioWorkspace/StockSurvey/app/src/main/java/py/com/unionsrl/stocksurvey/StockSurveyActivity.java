@@ -2,6 +2,7 @@ package py.com.unionsrl.stocksurvey;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -30,9 +31,39 @@ public class StockSurveyActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_survey);
-        Intent intent = getIntent();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        etxtCode = (EditText) findViewById(R.id.etxt_Code);
+        etxtCode.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View view, boolean hasFocus) {
+                if (!hasFocus) {
+                    txtvName = (TextView) findViewById(R.id.txtv_Name);
+                    etxtCode = (EditText) findViewById(R.id.etxt_Code);
+                    String code = etxtCode.getText().toString();
+                    String where;
+                    if (code.length() > 0) {
+                        StockSQLiteHelper sdb = StockSQLiteHelper.getInstance(getApplicationContext());
+                        db = sdb.getReadableDatabase();
+                        String[] campos = new String[] {"name"};
+                        where = "code='" + code + "'";
+                        Cursor c = db.query("Item", campos, where, null, null, null, null);
+                        if (c.moveToFirst()) {
+                            txtvName.setText(c.getString(0));
+                        }
+                        else {
+                            txtvName.setText(R.string.Name);
+                            message("Codigo no encontrado");
+                        }
+                        c.close();
+                        db.close();
+                    }
+                }
+            }
+        });
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -83,6 +114,10 @@ public class StockSurveyActivity extends ActionBarActivity {
         db.close();
         Toast.makeText(StockSurveyActivity.this, R.string.stock_survey_saved, Toast.LENGTH_LONG).show();
         finish();
+    }
+
+    public void message(String toastString) {
+        Toast.makeText(getApplicationContext(), toastString, Toast.LENGTH_LONG).show();
     }
 
     public void backMain(View view) {
