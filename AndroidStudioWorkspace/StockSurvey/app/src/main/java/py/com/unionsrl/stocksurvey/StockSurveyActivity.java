@@ -16,7 +16,9 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import py.com.unionsrl.stocksurvey.database.ItemDBManager;
 import py.com.unionsrl.stocksurvey.database.StockSQLiteHelper;
+import py.com.unionsrl.stocksurvey.models.Item;
 
 
 public class StockSurveyActivity extends ActionBarActivity {
@@ -44,22 +46,15 @@ public class StockSurveyActivity extends ActionBarActivity {
                     txtvName = (TextView) findViewById(R.id.txtv_Name);
                     etxtCode = (EditText) findViewById(R.id.etxt_Code);
                     String code = etxtCode.getText().toString();
-                    String where;
                     if (code.length() > 0) {
-                        StockSQLiteHelper sdb = StockSQLiteHelper.getInstance(getApplicationContext());
-                        db = sdb.getReadableDatabase();
-                        String[] campos = new String[] {"name"};
-                        where = "code='" + code + "'";
-                        Cursor c = db.query("Item", campos, where, null, null, null, null);
-                        if (c.moveToFirst()) {
-                            txtvName.setText(c.getString(0));
+                        Item item = ItemDBManager.load(getApplicationContext(), Integer.valueOf(code));
+                        if (item.getCode() != 0) {
+                            txtvName.setText(item.getName());
                         }
                         else {
                             txtvName.setText(R.string.Name);
                             message("Codigo no encontrado");
                         }
-                        c.close();
-                        db.close();
                     }
                 }
             }

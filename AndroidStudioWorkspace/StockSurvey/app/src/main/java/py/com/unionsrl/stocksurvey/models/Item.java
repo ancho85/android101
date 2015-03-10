@@ -11,6 +11,8 @@ public class Item {
     private String name;
     private String barCode;
 
+    public Item(){}
+
     public Item(Integer code, String name, String barCode) {
         setCode(code);
         setName(name);
