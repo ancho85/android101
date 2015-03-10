@@ -7,9 +7,9 @@ public class Item {
     /**
      *
      */
-    private Integer code;
-    private String name;
-    private String barCode;
+    private Integer code = 0;
+    private String name = "";
+    private String barCode = "";
 
     public Item(){}
 
