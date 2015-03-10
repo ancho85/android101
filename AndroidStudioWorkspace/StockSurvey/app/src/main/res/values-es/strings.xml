@@ -23,4 +23,5 @@
     <string name="sync_success">Sincronizacion exitosa</string>
     <string name="unknown_error">Error desconocido</string>
     <string name="ws_comm_error">Error de comunicacion con el WebService. Verifique Internet</string>
+    <string name="code_not_found">Codigo no encontrado</string>
 </resources>

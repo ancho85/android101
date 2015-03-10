@@ -19,6 +19,7 @@
     <string name="title_activity_stock_report">Stock Report</string>
     <string name="please_wait">Please wait</string>
     <string name="requesting_masters_data">Requesting Masters Data</string>
+    <string name="code_not_found">Code Not Found</string>
     <string name="unknown_error">Unknown Error</string>
     <string name="ws_comm_error">WebService Communication Error</string>
     <string name="sync_success">"Sync Success"</string>

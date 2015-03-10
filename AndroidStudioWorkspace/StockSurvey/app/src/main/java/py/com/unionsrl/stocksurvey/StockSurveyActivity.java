@@ -1,11 +1,9 @@
 package py.com.unionsrl.stocksurvey;
 
-import android.content.ContentValues;
-import android.database.Cursor;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import py.com.unionsrl.stocksurvey.database.ItemDBManager;
-import py.com.unionsrl.stocksurvey.database.StockSQLiteHelper;
+import py.com.unionsrl.stocksurvey.database.StockDBManager;
 import py.com.unionsrl.stocksurvey.models.Item;
 
 
@@ -27,8 +25,6 @@ public class StockSurveyActivity extends ActionBarActivity {
     EditText etxtLot;
     EditText etxtQty;
     TextView txtvName;
-
-    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,13 +43,14 @@ public class StockSurveyActivity extends ActionBarActivity {
                     etxtCode = (EditText) findViewById(R.id.etxt_Code);
                     String code = etxtCode.getText().toString();
                     if (code.length() > 0) {
-                        Item item = ItemDBManager.load(getApplicationContext(), Integer.valueOf(code));
+                        Context ctx = getApplicationContext();
+                        Item item = ItemDBManager.load(ctx, Integer.valueOf(code));
                         if (item.getCode() != 0) {
                             txtvName.setText(item.getName());
                         }
                         else {
                             txtvName.setText(R.string.Name);
-                            message("Codigo no encontrado");
+                            message(ctx.getString(R.string.code_not_found));
                         }
                     }
                 }
@@ -84,32 +81,28 @@ public class StockSurveyActivity extends ActionBarActivity {
     }
 
     public void saveSurvey(View view) {
-        StockSQLiteHelper sdb = StockSQLiteHelper.getInstance(this);
-        db = sdb.getWritableDatabase();
-
         etxtCode = (EditText) findViewById(R.id.etxt_Code);
         etxtLot = (EditText) findViewById(R.id.etxt_Lot);
         etxtQty = (EditText) findViewById(R.id.etxt_Qty);
-        txtvName = (TextView) findViewById(R.id.txtv_Name);
 
-        ContentValues newStock = new ContentValues();
-        newStock.put("code", etxtCode.getText().toString());
-        newStock.put("lot", etxtLot.getText().toString());
-        newStock.put("qty", etxtQty.getText().toString());
-        newStock.put("name", txtvName.getText().toString());
-        newStock.put("datetime", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        Integer code = Integer.valueOf(etxtCode.getText().toString());
+        Item item = ItemDBManager.load(this, code);
+        if (item.getCode() != 0) {
+            String name = item.getName();
+            String lot = etxtLot.getText().toString();
+            Integer qty = Integer.valueOf(etxtQty.getText().toString());
+            String dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", java.util.Locale.getDefault()
+            ).format(new Date());
 
-        // Insertamos el registro en la base de datos
-        try {
-            db.insert("Stock", null, newStock);
+            StockDBManager stock = new StockDBManager(this);
+            stock.insert(code, name, lot, qty, dateTime);
+
+            message(getString(R.string.stock_survey_saved));
+            finish();
         }
-        catch (Exception ex) {
-            Log.e("SQLite", "Error!", ex);
+        else{
+            message(getString(R.string.code_not_found));
         }
-
-        db.close();
-        Toast.makeText(StockSurveyActivity.this, R.string.stock_survey_saved, Toast.LENGTH_LONG).show();
-        finish();
     }
 
     public void message(String toastString) {
