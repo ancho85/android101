@@ -24,4 +24,5 @@
     <string name="unknown_error">Error desconocido</string>
     <string name="ws_comm_error">Error de comunicacion con el WebService. Verifique Internet</string>
     <string name="code_not_found">Codigo no encontrado</string>
+    <string name="code_lot_qty_not_empty">Codigo, Lote y Cantidad no pueden quedar vacios</string>
 </resources>

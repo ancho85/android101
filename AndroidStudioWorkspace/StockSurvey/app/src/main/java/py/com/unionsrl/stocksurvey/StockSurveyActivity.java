@@ -86,12 +86,20 @@ public class StockSurveyActivity extends ActionBarActivity {
         etxtLot = (EditText) findViewById(R.id.etxt_Lot);
         etxtQty = (EditText) findViewById(R.id.etxt_Qty);
 
-        Integer code = Integer.valueOf(etxtCode.getText().toString());
-        Item item = ItemDBManager.load(this, code);
+        String code = etxtCode.getText().toString();
+        String lot = etxtLot.getText().toString();
+        String qty = etxtQty.getText().toString();
+
+        if (!(lot.trim().length() > 0 && qty.trim().length() > 0 && code.trim().length() > 0)){
+            message(getString(R.string.code_lot_qty_not_empty));
+            return;
+        }
+        Integer intCode = Integer.valueOf(code);
+        Integer intQty = Integer.valueOf(qty);
+
+        Item item = ItemDBManager.load(this, intCode);
         if (item.getCode() != 0) {
             String name = item.getName();
-            String lot = etxtLot.getText().toString();
-            Integer qty = Integer.valueOf(etxtQty.getText().toString());
             String dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", java.util.Locale.getDefault()
             ).format(new Date());
             TelephonyManager phoneManager = (TelephonyManager)
@@ -99,7 +107,7 @@ public class StockSurveyActivity extends ActionBarActivity {
             String phoneNumber = phoneManager.getLine1Number();
 
             StockDBManager stock = new StockDBManager(this);
-            stock.insert(code, name, lot, qty, dateTime, phoneNumber);
+            stock.insert(intCode, name, lot, intQty, dateTime, phoneNumber);
 
             message(getString(R.string.stock_survey_saved));
             finish();

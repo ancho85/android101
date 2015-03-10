@@ -22,5 +22,6 @@
     <string name="code_not_found">Code Not Found</string>
     <string name="unknown_error">Unknown Error</string>
     <string name="ws_comm_error">WebService Communication Error</string>
-    <string name="sync_success">"Sync Success"</string>
+    <string name="sync_success">Sync Succes"</string>
+    <string name="code_lot_qty_not_empty">Code, Lot and Qty can not be empty</string>
 </resources>
