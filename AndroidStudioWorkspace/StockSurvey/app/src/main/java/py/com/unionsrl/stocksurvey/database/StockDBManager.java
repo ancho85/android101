@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+
 import py.com.unionsrl.stocksurvey.models.Stock;
 
 /**
@@ -49,23 +51,19 @@ public class StockDBManager {
         db.update(TABLE_NAME, setContentValues(code, name, lot, qty, dateTime), CN_CODE + "=?", new String[]{code.toString()});
     }
 
-    public Stock[] getStocks() {
+    public ArrayList<Stock> getStocks() {
         String[] columns = new String[]{CN_CODE, CN_NAME, CN_LOT, CN_QTY, CN_DATETIME};
         Cursor c = db.query(TABLE_NAME, columns, null, null, null, null, null);
-        Stock[] customer = new Stock[c.getCount()];
+        ArrayList<Stock> alstock = new ArrayList<>();
         if (c.moveToFirst()) {
             do {
                 Integer position = c.getPosition();
-                customer[position] = new Stock();
-                customer[position].setCode(Integer.valueOf(c.getString(0)));
-                customer[position].setName(c.getString(1));
-                customer[position].setLot(c.getString(2));
-                customer[position].setQty(Integer.valueOf(c.getString(3)));
-                customer[position].setDateTime(c.getString(4));
+                Stock stock = new Stock(Integer.valueOf(c.getString(0)), c.getString(1), c.getString(2), Integer.valueOf(c.getString(3)), c.getString(4));
+                alstock.add(position, stock);
             } while (c.moveToNext());
         }
         c.close();
-        return customer;
+        return alstock;
     }
 
     public Integer countByCode(Integer code) {

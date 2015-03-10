@@ -12,13 +12,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import py.com.unionsrl.stocksurvey.database.StockDBManager;
 import py.com.unionsrl.stocksurvey.models.Stock;
 
 
 public class StockReportActivity extends ActionBarActivity {
 
-    private Stock[] datos = new Stock[25];
+    private ArrayList<Stock> datos = new ArrayList<>();
 
     static class ViewHolder {
         TextView tvCode;
@@ -69,11 +71,11 @@ public class StockReportActivity extends ActionBarActivity {
                 else {
                     holder = (ViewHolder) item.getTag();
                 }
-                holder.tvCode.setText(datos[position].getCode().toString());
-                holder.tvName.setText(datos[position].getName());
-                holder.tvLot.setText(datos[position].getLot());
-                holder.tvQty.setText(datos[position].getQty().toString());
-                holder.tvDatetime.setText(datos[position].getDateTime());
+                holder.tvCode.setText(datos.get(position).getCode().toString());
+                holder.tvName.setText(datos.get(position).getName());
+                holder.tvLot.setText(datos.get(position).getLot());
+                holder.tvQty.setText(datos.get(position).getQty().toString());
+                holder.tvDatetime.setText(datos.get(position).getDateTime());
                 return (item);
             }
         }

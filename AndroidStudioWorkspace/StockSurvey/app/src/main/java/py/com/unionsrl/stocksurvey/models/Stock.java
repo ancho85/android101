@@ -11,14 +11,6 @@ public class Stock {
     private Integer qty;
     private String dateTime;
 
-    public Stock(){
-        setCode(0);
-        setName("");
-        setLot("");
-        setQty(0);
-        setDateTime("");
-    };
-
     public Stock(Integer code, String name, String lot, Integer qty, String dateTime) {
         setCode(code);
         setName(name);
