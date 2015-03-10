@@ -1,6 +1,5 @@
 package py.com.unionsrl.stocksurvey;
 
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -13,14 +12,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import py.com.unionsrl.stocksurvey.database.StockSQLiteHelper;
+import py.com.unionsrl.stocksurvey.database.StockDBManager;
 import py.com.unionsrl.stocksurvey.models.Stock;
 
 
 public class StockReportActivity extends ActionBarActivity {
 
     private Stock[] datos = new Stock[25];
-    SQLiteDatabase db;
 
     static class ViewHolder {
         TextView tvCode;
@@ -43,7 +41,8 @@ public class StockReportActivity extends ActionBarActivity {
     }
 
     private void showReport(){
-        datos = getDataFromDatabase();
+        StockDBManager sdbm = new StockDBManager(this);
+        datos = sdbm.getStocks();
 
         class AdaptadorStock extends ArrayAdapter {
             ActionBarActivity context;
@@ -111,34 +110,4 @@ public class StockReportActivity extends ActionBarActivity {
         finish();
     }
 
-    private Stock[] getDataFromDatabase() {
-        StockSQLiteHelper sdb = StockSQLiteHelper.getInstance(this);
-        db = sdb.getReadableDatabase();
-
-        String[] campos = new String[] { "code", "name", "lot", "qty", "datetime" };
-        Stock[] Survey;
-
-        Cursor c = db.query("Stock", campos, null, null, null, null, null);
-
-        Survey = new Stock[c.getCount()];
-
-        if (c.moveToFirst()) {
-            int i = 0;
-            do {
-                String code = c.getString(0);
-                String name = c.getString(1);
-                String lot = c.getString(2);
-                String qty = c.getString(3);
-                String datetime = c.getString(4);
-
-                Survey[i] = new Stock(Integer.valueOf(code), name, lot, Integer.valueOf(qty), datetime);
-                i++;
-
-            }
-            while (c.moveToNext());
-        }
-        c.close();
-        db.close();
-        return Survey;
-    }
 }
