@@ -53,7 +53,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
+        android:inputType="textNoSuggestions|textVisiblePassword"
         android:ems="10"
         android:id="@+id/etxt_Lot"
         android:layout_below="@+id/txtv_Lot"
