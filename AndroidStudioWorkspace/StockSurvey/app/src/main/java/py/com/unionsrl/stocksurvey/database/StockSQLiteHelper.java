@@ -13,12 +13,13 @@ public class StockSQLiteHelper extends SQLiteOpenHelper {
     private static StockSQLiteHelper mInstance = null;
 
     private static final String DATABASE_NAME = "DBStockSurvey.sqlite";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     String sqlItemCreate = "CREATE TABLE Item (code INTEGER PRIMARY KEY NOT NULL, " +
             "name TEXT NOT NULL, barcode TEXT)";
     String sqlStockCreate = "CREATE TABLE Stock (code INTEGER, name TEXT NOT NULL, " +
-            "lot TEXT NOT NULL, qty INTEGER NOT NULL, datetime TEXT NOT NULL)";
+            "lot TEXT NOT NULL, qty INTEGER NOT NULL, datetime TEXT NOT NULL, "+
+            "phonenumber TEXT NOT NULL)";
 
 
     public static StockSQLiteHelper getInstance(Context ctx) {

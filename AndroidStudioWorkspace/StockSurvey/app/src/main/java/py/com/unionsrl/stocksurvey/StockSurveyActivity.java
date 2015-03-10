@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -93,9 +94,12 @@ public class StockSurveyActivity extends ActionBarActivity {
             Integer qty = Integer.valueOf(etxtQty.getText().toString());
             String dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", java.util.Locale.getDefault()
             ).format(new Date());
+            TelephonyManager phoneManager = (TelephonyManager)
+                    getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
+            String phoneNumber = phoneManager.getLine1Number();
 
             StockDBManager stock = new StockDBManager(this);
-            stock.insert(code, name, lot, qty, dateTime);
+            stock.insert(code, name, lot, qty, dateTime, phoneNumber);
 
             message(getString(R.string.stock_survey_saved));
             finish();

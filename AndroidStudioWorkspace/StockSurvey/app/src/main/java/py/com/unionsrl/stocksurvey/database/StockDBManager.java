@@ -18,47 +18,48 @@ public class StockDBManager {
     public static final String CN_NAME = "name";
     public static final String CN_QTY = "qty";
     public static final String CN_LOT = "lot";
-    public static final String CN_DATETIME = "dateTime";
+    public static final String CN_DATETIME = "datetime";
+    public static final String CN_PHONENUMBER = "phoneNumber";
 
-    private StockSQLiteHelper helper;
     private SQLiteDatabase db;
 
 
     public StockDBManager(Context ctx){
-        StockSQLiteHelper sdb = StockSQLiteHelper.getInstance(ctx);
-        db = sdb.getWritableDatabase();
+        StockSQLiteHelper helper = StockSQLiteHelper.getInstance(ctx);
+        db = helper.getWritableDatabase();
     }
 
-    private ContentValues setContentValues(Integer code, String name, String lot, Integer qty, String dateTime) {
+    private ContentValues setContentValues(Integer code, String name, String lot, Integer qty, String dateTime, String phoneNumber) {
         ContentValues values = new ContentValues();
         values.put(CN_CODE, code);
         values.put(CN_NAME, name);
         values.put(CN_QTY, qty);
         values.put(CN_LOT, lot);
         values.put(CN_DATETIME, dateTime);
+        values.put(CN_PHONENUMBER, phoneNumber);
         return values;
     }
 
-    public void insert(Integer code, String name, String lot, Integer qty, String dateTime) {
-        db.insert(TABLE_NAME, null, setContentValues(code, name, lot, qty, dateTime));
+    public void insert(Integer code, String name, String lot, Integer qty, String dateTime, String phoneNumber) {
+        db.insert(TABLE_NAME, null, setContentValues(code, name, lot, qty, dateTime, phoneNumber));
     }
 
     public void delete(Integer code) {
         db.delete(TABLE_NAME, CN_CODE + "=?", new String[]{code.toString()});
     }
 
-    public void update(Integer code, String name, String lot, Integer qty, String dateTime) {
-        db.update(TABLE_NAME, setContentValues(code, name, lot, qty, dateTime), CN_CODE + "=?", new String[]{code.toString()});
+    public void update(Integer code, String name, String lot, Integer qty, String dateTime, String phoneNumber) {
+        db.update(TABLE_NAME, setContentValues(code, name, lot, qty, dateTime, phoneNumber), CN_CODE + "=?", new String[]{code.toString()});
     }
 
     public ArrayList<Stock> getStocks() {
-        String[] columns = new String[]{CN_CODE, CN_NAME, CN_LOT, CN_QTY, CN_DATETIME};
+        String[] columns = new String[]{CN_CODE, CN_NAME, CN_LOT, CN_QTY, CN_DATETIME, CN_PHONENUMBER};
         Cursor c = db.query(TABLE_NAME, columns, null, null, null, null, null);
         ArrayList<Stock> alstock = new ArrayList<>();
         if (c.moveToFirst()) {
             do {
                 Integer position = c.getPosition();
-                Stock stock = new Stock(Integer.valueOf(c.getString(0)), c.getString(1), c.getString(2), Integer.valueOf(c.getString(3)), c.getString(4));
+                Stock stock = new Stock(Integer.valueOf(c.getString(0)), c.getString(1), c.getString(2), Integer.valueOf(c.getString(3)), c.getString(4), c.getString(5));
                 alstock.add(position, stock);
             } while (c.moveToNext());
         }

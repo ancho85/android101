@@ -10,13 +10,15 @@ public class Stock {
     private String lot;
     private Integer qty;
     private String dateTime;
+    private String phoneNumber;
 
-    public Stock(Integer code, String name, String lot, Integer qty, String dateTime) {
+    public Stock(Integer code, String name, String lot, Integer qty, String dateTime, String phoneNumber) {
         setCode(code);
         setName(name);
         setLot(lot);
         setQty(qty);
         setDateTime(dateTime);
+        setPhoneNumber(phoneNumber);
     }
 
     public Integer getCode() {
@@ -58,4 +60,13 @@ public class Stock {
     public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
     }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
 }
