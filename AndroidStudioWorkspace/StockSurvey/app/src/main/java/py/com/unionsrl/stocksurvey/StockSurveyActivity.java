@@ -46,7 +46,7 @@ public class StockSurveyActivity extends ActionBarActivity {
                         Context ctx = getApplicationContext();
                         Item item = ItemDBManager.load(ctx, Integer.valueOf(code));
                         if (item.getCode() != 0) {
-                            txtvName.setText(item.getName());
+                            txtvName.setText(item.getBarCode() + "-" + item.getName());
                         }
                         else {
                             txtvName.setText(R.string.Name);
